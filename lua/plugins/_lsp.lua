@@ -28,7 +28,7 @@ function On_Attach(client, bufnr)
                         "<cmd>lua vim.lsp.buf.rename()<CR>",
                         "LSP:: rename" },
                 ["<space>f"] = {
-                        "<cmd>lua vim.lsp.buf.format { async = true }<CR>",
+                        "<cmd>lua vim.lsp.buf.formatting()<CR>",
                         "LSP:: format" },
                 ["<space>a"] = {
                         "<cmd>lua vim.lsp.buf.code_action()<CR>",
