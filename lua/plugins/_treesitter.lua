@@ -5,29 +5,23 @@
 
 local function config()
           local extra_parsers = {
-                "markdown",
                 "go",
-                "bash",
                 "c",
                 "cpp",
                 "cmake",
                 "css",
-                "gomod",
-                "gowork",
-                "hjson",
                 "html",
                 "javascript",
                 "jsdoc",
                 "json",
                 "latex",
                 "lua",
-                "ninja",
                 "python",
                 "rust",
-                "swift",
                 "typescript",
                 "yaml",
-                "swift"
+                "tsx",
+                "vue",
         }
         local parsers = {}
         for _, parser in ipairs(extra_parsers) do

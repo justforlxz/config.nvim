@@ -9,72 +9,81 @@ Capabilities = vim.lsp.protocol.make_client_capabilities()
 -- after the language server attaches to the current buffer
 On_Attach_hooks = {}
 function On_Attach(client, bufnr)
-        local wk = require("which-key")
-        local key_opts = {
-                mode    = "n",
-                buffer  = 0, -- local mappings
-                silent  = true, -- use `silent ` when creating keymaps
-                noremap = true, -- use `noremap` when creating keymaps
-        }
+  local wk = require("which-key")
+  local key_opts = {
+    mode    = "n",
+    buffer  = 0, -- local mappings
+    silent  = true, -- use `silent ` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+  }
 
-        wk.register({
-                ["K"] = {
-                        "<cmd>lua vim.lsp.buf.hover()<CR>",
-                        "LSP:: hover" },
-                ["<C-k>"] = {
-                        "<cmd>lua vim.lsp.buf.signature_help()<CR>",
-                        "LSP:: signature help" },
-                ["<space>rn"] = {
-                        "<cmd>lua vim.lsp.buf.rename()<CR>",
-                        "LSP:: rename" },
-                ["<space>f"] = {
-                        "<cmd>lua vim.lsp.buf.formatting()<CR>",
-                        "LSP:: format" },
-                ["<space>a"] = {
-                        "<cmd>lua vim.lsp.buf.code_action()<CR>",
-                        "LSP:: code action" },
-                ["<space>E"] = {
-                        "<cmd>lua vim.diagnostic.open_float()<CR>",
-                        "LSP:: float diagnostic"
-      },
-        }, key_opts)
+  wk.register({
+    ["K"] = {
+      "<cmd>lua vim.lsp.buf.hover()<CR>",
+      "LSP:: hover"
+    },
+    ["<C-k>"] = {
+      "<cmd>lua vim.lsp.buf.signature_help()<CR>",
+      "LSP:: signature help"
+    },
+    ["<space>rn"] = {
+      "<cmd>lua vim.lsp.buf.rename()<CR>",
+      "LSP:: rename"
+    },
+    ["<space>f"] = {
+      "<cmd>lua vim.lsp.buf.formatting()<CR>",
+      "LSP:: format"
+    },
+    ["<space>a"] = {
+      "<cmd>lua vim.lsp.buf.code_action()<CR>",
+      "LSP:: code action"
+    },
+    ["<space>E"] = {
+      "<cmd>lua vim.diagnostic.open_float()<CR>",
+      "LSP:: float diagnostic"
+    },
+  }, key_opts)
 
-        key_opts = {
-                mode    = "n",
-                buffer  = 0, -- local mappings
-                silent  = true, -- use `silent ` when creating keymaps
-                noremap = false, -- not use `noremap` when creating keymaps
-        }
+  key_opts = {
+    mode    = "n",
+    buffer  = 0, -- local mappings
+    silent  = true, -- use `silent ` when creating keymaps
+    noremap = false, -- not use `noremap` when creating keymaps
+  }
 
-        wk.register({
-                ["gd"] = {
-                        "<cmd>lua vim.lsp.buf.definition()<cr>",
-                        "LSP:: definition" },
-                ["gr"] = {
-                        "<cmd>lua vim.lsp.buf.references()<cr>",
-                        "LSP:: reference" },
-                ["gi"] = {
-                        "<cmd>lua vim.lsp.buf.implementation()<cr>",
-                        "LSP:: implementation" },
-                ["gy"] = {
-                        "<cmd>lua vim.lsp.buf.type_definition()<cr>",
-                        "LSP:: type definition" },
-                ["<leader>t"] = {
-                        "<cmd>AerialToggle<cr>",
-                        "LSP:: show outline" },
-        }, key_opts)
+  wk.register({
+    ["gd"] = {
+      "<cmd>lua vim.lsp.buf.definition()<cr>",
+      "LSP:: definition"
+    },
+    ["gr"] = {
+      "<cmd>lua vim.lsp.buf.references()<cr>",
+      "LSP:: reference"
+    },
+    ["gi"] = {
+      "<cmd>lua vim.lsp.buf.implementation()<cr>",
+      "LSP:: implementation"
+    },
+    ["gy"] = {
+      "<cmd>lua vim.lsp.buf.type_definition()<cr>",
+      "LSP:: type definition"
+    },
+    ["<leader>t"] = {
+      "<cmd>AerialToggle<cr>",
+      "LSP:: show outline"
+    },
+  }, key_opts)
 
-        for _, hook in ipairs(On_Attach_hooks) do
-                if hook ~= nil then
-                        hook(client, bufnr)
-                end
-        end
+  for _, hook in ipairs(On_Attach_hooks) do
+    if hook ~= nil then
+      hook(client, bufnr)
+    end
+  end
 end
 
 -- NOTE: In config() we are not allow to call other local functions, which
 -- leads to a error. So we have to put all local functions at the start of
 -- config()
-
 local function config()
 
   local function get_my_lsp_configs()
@@ -147,6 +156,39 @@ local function config()
   end
 
   require("aerial").setup()
+
+  --- prettier
+  local null_ls = require("null-ls")
+  null_ls.setup({
+    on_attach = function(client, bufnr)
+      if client.server_capabilities.documentFormattingProvider then
+        vim.cmd("nnoremap <silent><buffer> <Space>f :lua vim.lsp.buf.formatting()<CR>")
+      end
+
+      if client.server_capabilities.documentRangeFormattingProvider then
+        vim.cmd("xnoremap <silent><buffer> <Space>f :lua vim.lsp.buf.range_formatting({})<CR>")
+      end
+    end,
+  })
+  local prettier = require("prettier")
+
+  prettier.setup({
+    bin = 'prettier', -- or `'prettierd'` (v0.22+)
+    filetypes = {
+      "css",
+      "graphql",
+      "html",
+      "javascript",
+      "javascriptreact",
+      "json",
+      "less",
+      "markdown",
+      "scss",
+      "typescript",
+      "typescriptreact",
+      "yaml",
+    },
+  })
 end
 
 return {
@@ -158,5 +200,7 @@ return {
   requires = {
     'williamboman/nvim-lsp-installer',
     'stevearc/aerial.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
+    'MunifTanjim/prettier.nvim',
   }
 }
