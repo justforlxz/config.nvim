@@ -31,7 +31,7 @@ function On_Attach(client, bufnr)
       "LSP:: rename"
     },
     ["<space>f"] = {
-      "<cmd>lua vim.lsp.buf.formatting()<CR>",
+      "<cmd>lua vim.lsp.buf.format { async = true }<CR>",
       "LSP:: format"
     },
     ["<space>a"] = {
@@ -121,7 +121,7 @@ local function config()
     'ccls',
     'cmake',
     'eslint',
-    'angularls',
+    -- 'angularls',
     'yamlls',
     'sumneko_lua',
     'rust_analyzer',
@@ -162,7 +162,7 @@ local function config()
   null_ls.setup({
     on_attach = function(client, bufnr)
       if client.server_capabilities.documentFormattingProvider then
-        vim.cmd("nnoremap <silent><buffer> <Space>f :lua vim.lsp.buf.formatting()<CR>")
+        vim.cmd("nnoremap <silent><buffer> <Space>f :lua vim.lsp.buf.format { async = true }<CR>")
       end
 
       if client.server_capabilities.documentRangeFormattingProvider then
