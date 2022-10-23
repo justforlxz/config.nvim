@@ -56,9 +56,7 @@ local config = function()
 
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
   cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
-
-
-  Capabilities = require('cmp_nvim_lsp').update_capabilities(Capabilities)
+  Capabilities = require('cmp_nvim_lsp').default_capabilities()
 end
 
 return {

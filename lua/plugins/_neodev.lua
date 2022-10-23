@@ -6,19 +6,28 @@
 -- but this configuration will not suitable for really develop projects in lua.
 
 local function config()
-  local util = require 'lspconfig.util'
-  local luadev = require("lua-dev").setup({
-    lspconfig = {
-      on_attach = On_Attach,
-      root_dir = util.root_pattern('.git','lua')
-    },
+  -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+  require("neodev").setup({
+    -- add any options here, or leave empty to use the default settings
   })
+
+  -- then setup your lsp server as usual
   local lspconfig = require('lspconfig')
-  lspconfig.sumneko_lua.setup(luadev)
+
+  -- example to setup sumneko and enable call snippets
+  lspconfig.sumneko_lua.setup({
+    settings = {
+      Lua = {
+        completion = {
+          callSnippet = "Replace"
+        }
+      }
+    }
+  })
 end
 
 return {
-  'folke/lua-dev.nvim',
+  'folke/neodev.nvim',
   config = config,
   after = {
     'nvim-lspconfig',
