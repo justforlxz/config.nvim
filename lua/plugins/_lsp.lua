@@ -112,6 +112,7 @@ local function config()
   local lsp_config = get_my_lsp_configs()
 
   local server_list = {
+    'qmlls',
     'bashls',
     'gopls',
     'jsonls',
