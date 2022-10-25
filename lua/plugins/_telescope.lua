@@ -31,19 +31,6 @@ local function config()
         -- Display symbols as <root>.<parent>.<symbol>
         show_nesting = true
       },
-      file_browser = {
-        require("telescope.themes").get_dropdown {},
-        -- disables netrw and use telescope-file-browser in its place
-        hijack_netrw = true,
-        mappings = {
-          ["i"] = {
-            -- your custom insert mode mappings
-          },
-          ["n"] = {
-            -- your custom normal mode mappings
-          },
-        },
-      },
     }
   })
 
@@ -139,7 +126,6 @@ local function config()
 
   require("telescope").load_extension("ui-select")
   require('telescope').load_extension('aerial')
-  require("telescope").load_extension("file_browser")
 end
 
 return {
@@ -147,7 +133,6 @@ return {
   requires = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
-    'nvim-telescope/telescope-file-browser.nvim',
   },
   after = {
     'nvim-lspconfig',
