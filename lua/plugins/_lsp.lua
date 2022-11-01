@@ -68,10 +68,6 @@ function On_Attach(client, bufnr)
       "<cmd>lua vim.lsp.buf.type_definition()<cr>",
       "LSP:: type definition"
     },
-    ["<leader>t"] = {
-      "<cmd>AerialToggle<cr>",
-      "LSP:: show outline"
-    },
   }, key_opts)
 
   for _, hook in ipairs(On_Attach_hooks) do
@@ -156,8 +152,6 @@ local function config()
     require('lspconfig')[lsp].setup(cfg)
   end
 
-  require("aerial").setup()
-
   --- prettier
   local null_ls = require("null-ls")
   null_ls.setup({
@@ -200,7 +194,6 @@ return {
   },
   requires = {
     'williamboman/nvim-lsp-installer',
-    'stevearc/aerial.nvim',
     'jose-elias-alvarez/null-ls.nvim',
     'MunifTanjim/prettier.nvim',
   }

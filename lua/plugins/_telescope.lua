@@ -6,7 +6,12 @@
 -- Telescope is centered around modularity, allowing for easy customization.
 
 local function config()
+  require("telescope").load_extension("ui-select")
+  require('telescope').load_extension('aerial')
+  require('telescope').load_extension('fzf')
+
   local actions = require("telescope.actions")
+
   require('telescope').setup({
     defaults = { mappings = {
       i = {
@@ -29,7 +34,9 @@ local function config()
       },
       aerial = {
         -- Display symbols as <root>.<parent>.<symbol>
-        show_nesting = true
+        show_nesting = {
+          ['_'] = false, -- This key will be the default
+        }
       },
       fzf = {
         fuzzy = true,                    -- false will only do exact matching
@@ -130,9 +137,6 @@ local function config()
     key_opts
   )
 
-  require("telescope").load_extension("ui-select")
-  require('telescope').load_extension('aerial')
-  require('telescope').load_extension('fzf')
 end
 
 return {
@@ -143,7 +147,8 @@ return {
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-    }
+    },
+    'stevearc/aerial.nvim',
   },
   after = {
     'nvim-lspconfig',
