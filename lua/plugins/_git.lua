@@ -18,6 +18,23 @@ local function config()
                         ignore_whitespace = false,
                 },
                 keymaps = {},
+                preview_config = {
+                  -- Options passed to nvim_open_win
+                  border = 'single',
+                  style = 'minimal',
+                  relative = 'cursor',
+                  row = 0,
+                  col = 1
+                },
+        })
+
+        require('git').setup({
+            default_mappings = true,
+            target_branch = "master",
+            keymaps = {
+              -- Close blame window
+                quit_blame = "q",
+            }
         })
 
         local wk = require("which-key")
@@ -65,6 +82,7 @@ return {
                                 'nvim-lua/plenary.nvim',
                         },
                 },
+                'dinhhuy258/git.nvim',
         },
         config = config,
 }
