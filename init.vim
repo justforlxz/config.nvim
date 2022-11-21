@@ -2,8 +2,7 @@
 lua require('basic')
 
 " 快捷键映射
-lua require('keybinds')
+lua require('config.keybinds')
 
 " Packer插件管理
-lua require('plugins')
-
+lua require('plugins').setup()
