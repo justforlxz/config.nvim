@@ -40,15 +40,15 @@ vim.o.hlsearch = false
 -- 边输入边搜索
 vim.o.incsearch = true
 -- 使用增强状态栏后不再需要 vim 的模式提示
-vim.o.showmode = false
+vim.o.showmode = true
 -- 命令行高为2，提供足够的显示空间
 vim.o.cmdheight = 2
 -- 当文件被外部程序修改时，自动加载
 vim.o.autoread = true
 vim.bo.autoread = true
 -- 禁止折行
-vim.o.wrap = false
-vim.wo.wrap = false
+vim.o.wrap = true
+vim.wo.wrap = true
 -- 行结尾可以跳到下一行
 vim.o.whichwrap = 'b,s,<,>,[,],h,l'
 

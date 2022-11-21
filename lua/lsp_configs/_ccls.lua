@@ -4,9 +4,16 @@ return {
     cache = {
       directory = home .. "/.ccls-cache",
       retainInMemory = 0,
-    },
-    -- highlight = {
-      -- lsRanges = true,
-    -- }
+    };
+    compilationDatabaseDirectory = "build";
+    index = {
+      threads = 4;
+    };
+    clang = {
+      excludeArgs = { "-frounding-math"} ;
+    };
+    highlight = {
+      lsRanges = true,
+    }
   }
 }
