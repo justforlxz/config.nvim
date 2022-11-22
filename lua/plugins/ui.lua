@@ -8,11 +8,6 @@ function M.setup(use)
         cond = firenvim_not_active,
         config = [[require('config.dashboard-nvim')]]
     }
-    use {
-        "lukas-reineke/indent-blankline.nvim",
-        event = "VimEnter",
-        config = [[require('config.indent-blankline')]]
-    }
 
     -- Highlight URLs inside vim
     use {
@@ -117,6 +112,74 @@ function M.setup(use)
     }
     use {
         "lifepillar/vim-colortemplate",
+        disable = true
+    }
+
+    -- WhichKey
+    use {
+        "folke/which-key.nvim",
+        event = "VimEnter",
+        module = {"which-key"},
+        -- keys = { [[<leader>]] },
+        config = function()
+            require("config.whichkey").setup()
+        end,
+        disable = false
+    }
+
+    -- IndentLine
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        event = "BufReadPre",
+        config = function()
+            local g = vim.g
+            g.indent_blankline_char = "┊"
+            g.indent_blankline_filetype_exclude = { "help", "packer" }
+            g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+            g.indent_blankline_show_trailing_blankline_indent = false
+        end
+    }
+
+    -- Better icons
+    use {
+        "nvim-tree/nvim-web-devicons",
+        module = "nvim-web-devicons",
+        config = function()
+            require("nvim-web-devicons").setup {
+                default = true
+            }
+        end
+    }
+
+    -- Better Comment
+    use {
+        "numToStr/Comment.nvim",
+        keys = {"gc", "gcc", "gbc"},
+        config = function()
+            require("Comment").setup {
+                ignore = "^$",
+                pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+              }
+        end,
+        disable = false
+    }
+    use {
+        "tpope/vim-commentary",
+        keys = {"gc", "gcc", "gbc"},
+        disable = true
+    }
+
+    -- Better surround
+    use {
+        "tpope/vim-surround",
+        event = "BufReadPre"
+    }
+    use {
+        "Matt-A-Bennett/vim-surround-funk",
+        event = "BufReadPre",
+        config = function()
+            require("config.surroundfunk").setup()
+        end,
         disable = true
     }
 end
