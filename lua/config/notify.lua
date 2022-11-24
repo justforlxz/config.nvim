@@ -5,6 +5,7 @@ local icons = require "config.icons"
 function M.setup()
     local notify = require "notify"
     notify.setup {
+        background_colour = "#000000",
         icons = {
             ERROR = icons.diagnostics.Error,
             WARN = icons.diagnostics.Warning,

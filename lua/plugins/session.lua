@@ -17,7 +17,7 @@ function M.setup(use)
           require("config.possession").setup()
         end,
         cmd = { "PossessionSave", "PosessionLoad", "PosessionShow", "PossessionList" },
-        disable = true,
+        disable = false,
       }
       use {
         "tpope/vim-obsession",
@@ -25,7 +25,7 @@ function M.setup(use)
         config = function()
           require("config.obsession").setup()
         end,
-        disable = true,
+        disable = false,
       }
 end
 

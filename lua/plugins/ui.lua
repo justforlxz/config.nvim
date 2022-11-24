@@ -29,14 +29,14 @@ function M.setup(use)
         config = function()
             require("desktop-notify").override_vim_notify()
         end,
-        disable = true
+        disable = false,
     }
     use {
         "vigoux/notifier.nvim",
         config = function()
             require("notifier").setup {}
         end,
-        disable = true
+        disable = false,
     }
 
     -- Colorscheme
@@ -48,7 +48,7 @@ function M.setup(use)
             require("catppuccin").setup()
             vim.cmd [[colorscheme catppuccin]]
         end,
-        disable = true
+        disable = false,
     }
 
     use {
@@ -56,7 +56,7 @@ function M.setup(use)
         config = function()
             vim.cmd.colorscheme [[tokyonight]]
         end,
-        disable = false
+        disable = false,
     }
     use {
         "sainnhe/everforest",
@@ -64,25 +64,25 @@ function M.setup(use)
             vim.g.everforest_better_performance = 1
             vim.cmd.colorscheme [[everforest]]
         end,
-        disable = true
+        disable = false,
     }
     use {
         "projekt0n/github-nvim-theme",
-        disable = true
+        disable = false,
     }
     use {
         "sainnhe/gruvbox-material",
         config = function()
             vim.cmd "colorscheme gruvbox-material"
         end,
-        disable = true
+        disable = false,
     }
     use {
         "arcticicestudio/nord-vim",
         config = function()
             vim.cmd "colorscheme nord"
         end,
-        disable = true
+        disable = false,
     }
     use {
         "nvchad/nvim-colorizer.lua",
@@ -112,7 +112,7 @@ function M.setup(use)
     }
     use {
         "lifepillar/vim-colortemplate",
-        disable = true
+        disable = false,
     }
 
     -- WhichKey
@@ -183,7 +183,7 @@ function M.setup(use)
     use {
         "tpope/vim-commentary",
         keys = {"gc", "gcc", "gbc"},
-        disable = true
+        disable = false,
     }
 
     -- Better surround
@@ -197,7 +197,7 @@ function M.setup(use)
         config = function()
             require("config.surroundfunk").setup()
         end,
-        disable = true
+        disable = false,
     }
 end
 
