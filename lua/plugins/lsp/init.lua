@@ -46,6 +46,40 @@ function M.setup(use)
         disable = false
     }
 
+    --- cmp
+    use {
+        "hrsh7th/nvim-cmp",
+        config = function()
+            require("config.cmp").setup()
+        end,
+        requires = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lua", "ray-x/cmp-treesitter",
+                    "hrsh7th/cmp-cmdline", "saadparwaiz1/cmp_luasnip", {
+            "hrsh7th/cmp-nvim-lsp",
+            module = {"cmp_nvim_lsp"}
+        }, "hrsh7th/cmp-nvim-lsp-signature-help", "lukas-reineke/cmp-rg", "davidsierradz/cmp-conventionalcommits", {
+            "onsails/lspkind-nvim",
+            module = {"lspkind"}
+        }, "hrsh7th/cmp-calc", "f3fora/cmp-spell", "hrsh7th/cmp-emoji", {
+            "L3MON4D3/LuaSnip",
+            config = function()
+                require("config.snip").setup()
+            end,
+            module = {"luasnip"}
+        }, "rafamadriz/friendly-snippets", "honza/vim-snippets", {
+            "tzachar/cmp-tabnine",
+            run = "./install.sh",
+            disable = true
+        }, {
+            "danymat/neogen",
+            config = function()
+                require("config.neogen").setup()
+            end,
+            cmd = {"Neogen"},
+            module = "neogen",
+            disable = false
+        }}
+    }
+
     --- lsp
     use {
         "neovim/nvim-lspconfig",
@@ -246,14 +280,8 @@ function M.setup(use)
         end
     }
     use {
-        "python-rope/ropevim",
-        run = "pip install ropevim",
-        disable = true
-    }
-    use {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
-        disable = false,
         config = function()
             require("bqf").setup()
         end
@@ -261,7 +289,25 @@ function M.setup(use)
     use {
         "kevinhwang91/nvim-hlslens",
         event = "BufReadPre",
-        disable = true
+        config = function()
+            require('hlslens').setup()
+
+            local kopts = {
+                noremap = true,
+                silent = true
+            }
+
+            vim.api.nvim_set_keymap('n', 'n',
+                [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', 'N',
+                [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+            vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+
+            vim.api.nvim_set_keymap('n', '<Leader>l', ':noh<CR>', kopts)
+        end
     }
     use {
         "nvim-pack/nvim-spectre",

@@ -119,7 +119,13 @@ function M.on_attach(client, bufnr)
 	end
 
 	-- aerial.nvim
-	require("aerial").on_attach(client, bufnr)
+	require("aerial").setup({
+		on_attach = function(bufnr)
+			-- Jump forwards/backwards with '{' and '}'
+			vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr})
+			vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr})
+		  end
+	})
 
 	-- nvim-navic
 	if client.server_capabilities.documentSymbolProvider then

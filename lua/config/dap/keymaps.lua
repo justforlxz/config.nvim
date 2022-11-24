@@ -42,7 +42,7 @@ function M.setup()
     nowait = false,
   }
   whichkey.register(keymap, opts)
-  -- legendary.bind_whichkey(keymap, opts, false)
+  require("legendary.integrations.which-key").bind_whichkey(keymap, opts, false)
 
   local keymap_v = {
     d = {
@@ -59,7 +59,7 @@ function M.setup()
     nowait = false,
   }
   whichkey.register(keymap_v, opts)
-  -- legendary.bind_whichkey(keymap_v, opts, false)
+  require("legendary.integrations.which-key").bind_whichkey(keymap_v, opts, false)
 end
 
 return M

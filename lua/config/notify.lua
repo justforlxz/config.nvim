@@ -11,7 +11,14 @@ function M.setup()
             INFO = icons.diagnostics.Information,
             DEBUG = icons.ui.Bug,
             TRACE = icons.ui.Pencil
-        }
+        },
+        level = 2,
+        max_width = 80,
+        render = "default",
+        stages = "fade_in_slide_out",
+        timeout = 5000,
+        top_down = true,
+        fps = 30,
     }
     vim.notify = notify
 end

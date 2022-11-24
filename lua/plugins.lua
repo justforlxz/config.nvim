@@ -71,12 +71,19 @@ function M.setup()
     local packer = require "packer"
 
     -- Performance
-    -- pcall(require, "impatient")
+    pcall(require, "impatient")
     -- pcall(require, "packer_compiled")
 
     -- Plugins
     local function plugins(use)
-        init("steal")
+        use { "wbthomason/packer.nvim" }
+
+        -- Performance
+        use { "lewis6991/impatient.nvim" }
+
+        -- Load only when require
+        use { "nvim-lua/plenary.nvim", module = "plenary" }
+
         init("plugins")
         require('plugins.lsp').setup(use)
         require('plugins.dap').setup(use)
