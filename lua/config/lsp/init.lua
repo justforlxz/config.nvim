@@ -1,19 +1,19 @@
 local M = {}
 
-local util = require "lspconfig.util"
+local util = require("lspconfig.util")
 
 local servers = {
 	clangd = {
-    root_dir = util.root_pattern(
-          '.clangd',
-          '.clang-tidy',
-          '.clang-format',
-          'compile_commands.json',
-          'compile_flags.txt',
-          'configure.ac',
-          '.git'
-        )
-  },
+		root_dir = util.root_pattern(
+			".clangd",
+			".clang-tidy",
+			".clang-format",
+			"compile_commands.json",
+			"compile_flags.txt",
+			"configure.ac",
+			".git"
+		),
+	},
 	gopls = {},
 	html = {},
 	jsonls = {
@@ -63,6 +63,7 @@ local servers = {
 					-- library = vim.api.nvim_get_runtime_file("", true),
 					maxPreload = 2000,
 					preloadFileSize = 50000,
+					checkThirdParty = false, --  https://github.com/neovim/nvim-lspconfig/issues/1700#issuecomment-1033127328
 				},
 				completion = { callSnippet = "Both" },
 				telemetry = { enable = false },
