@@ -1,8 +1,19 @@
 local M = {}
 
--- local util = require "lspconfig.util"
+local util = require "lspconfig.util"
 
 local servers = {
+	clangd = {
+    root_dir = util.root_pattern(
+          '.clangd',
+          '.clang-tidy',
+          '.clang-format',
+          'compile_commands.json',
+          'compile_flags.txt',
+          'configure.ac',
+          '.git'
+        )
+  },
 	gopls = {},
 	html = {},
 	jsonls = {
@@ -122,9 +133,9 @@ function M.on_attach(client, bufnr)
 	require("aerial").setup({
 		on_attach = function(bufnr)
 			-- Jump forwards/backwards with '{' and '}'
-			vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr})
-			vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr})
-		  end
+			vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+			vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+		end,
 	})
 
 	-- nvim-navic
