@@ -81,109 +81,7 @@ end
 -- leads to a error. So we have to put all local functions at the start of
 -- config()
 local function config()
-
-  local function get_my_lsp_configs()
-    -- TODO: reduce duplicate code for read plugins config.
-    local home = os.getenv('HOME')
-    local lsp_configs = io.popen(
-      'find ' .. '"' ..
-      home .. '/.config/nvim/lua/lsp_configs/' ..
-      '"' .. ' -type f')
-    local ret = {}
-    if lsp_configs == nil then
-      return {}
-    end
-    for lsp_config in lsp_configs:lines() do
-      local part1, part2 = string.match(
-        lsp_config,
-        home .. "/[.]config/nvim/lua/(.*)_(.*)[.]lua")
-      if part1 ~= nil and part2 ~= nil then
-        lsp_config = part1 .. '_' .. part2
-        ret[part2] = require(lsp_config)
-      end
-    end
-    return ret
-  end
-
-  local lsp_config = get_my_lsp_configs()
-
-  local server_list = {
-    'qmlls',
-    'bashls',
-    'gopls',
-    'jsonls',
-    'pyright',
-    'tsserver',
-    'texlab',
-    'ccls',
-    'cmake',
-    'eslint',
-    -- 'angularls',
-    'yamlls',
-    'sumneko_lua',
-    'rust_analyzer',
-  }
-
-  require("nvim-lsp-installer").setup({
-    ensure_installed = server_list,
-    -- NOTE: this `automatic_installation` means automatically
-    -- detect which servers to install (based on which servers are
-    -- set up via lspconfig), but I do not want this.
-    automatic_installation = false,
-  })
-
-  local default_lsp_config = {
-    flags = {
-      debounce_text_changes = nil,
-    },
-    on_attach = On_Attach,
-    capabilities = Capabilities
-  }
-
-  -- Use a loop to conveniently call 'setup' on multiple servers and map
-  -- buffer local keybindings when the language server attaches.
-  for _, lsp in ipairs(server_list) do
-    local my_cfg = lsp_config[lsp]
-    if my_cfg == nil then
-      my_cfg = {}
-    end
-    local cfg = vim.tbl_deep_extend(
-      'force', default_lsp_config, my_cfg)
-    require('lspconfig')[lsp].setup(cfg)
-  end
-
-  --- prettier
-  local null_ls = require("null-ls")
-  null_ls.setup({
-    on_attach = function(client, bufnr)
-      if client.server_capabilities.documentFormattingProvider then
-        vim.cmd("nnoremap <silent><buffer> <Space>f :lua vim.lsp.buf.format { async = true }<CR>")
-      end
-
-      if client.server_capabilities.documentRangeFormattingProvider then
-        vim.cmd("xnoremap <silent><buffer> <Space>f :lua vim.lsp.buf.range_formatting({})<CR>")
-      end
-    end,
-  })
-  local prettier = require("prettier")
-
-  prettier.setup({
-    bin = 'prettier', -- or `'prettierd'` (v0.22+)
-    filetypes = {
-      "css",
-      "graphql",
-      "html",
-      "javascript",
-      "javascriptreact",
-      "json",
-      "less",
-      "markdown",
-      "scss",
-      "typescript",
-      "typescriptreact",
-      "yaml",
-    },
-  })
+  require('config.lsp').setup()
 end
 
 return {
@@ -193,8 +91,10 @@ return {
     'nvim-cmp',
   },
   requires = {
-    'williamboman/nvim-lsp-installer',
     'jose-elias-alvarez/null-ls.nvim',
     'MunifTanjim/prettier.nvim',
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
   }
 }
