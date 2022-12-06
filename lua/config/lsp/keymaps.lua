@@ -1,7 +1,6 @@
 local M = {}
 
 local whichkey = require("which-key")
-local legendary = require("legendary")
 
 -- local keymap = vim.api.nvim_set_keymap
 -- local buf_keymap = vim.api.nvim_buf_set_keymap
@@ -87,7 +86,6 @@ local function keymappings(client, bufnr)
         prefix = "<space>"
     }
     whichkey.register(keymap_l, o)
-    require("legendary.integrations.which-key").bind_whichkey(keymap_l, o, false)
 
     o = {
         mode = "v",
@@ -95,14 +93,12 @@ local function keymappings(client, bufnr)
         prefix = "<space>"
     }
     whichkey.register(keymap_v_l, o)
-    require("legendary.integrations.which-key").bind_whichkey(keymap_v_l, o, false)
 
     o = {
         buffer = bufnr,
         prefix = "g"
     }
     whichkey.register(keymap_g, o)
-    require("legendary.integrations.which-key").bind_whichkey(keymap_g, o, false)
 end
 
 -- local function signature_help(client, bufnr)
