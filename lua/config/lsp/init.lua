@@ -109,6 +109,15 @@ function M.on_attach(client, bufnr)
 	-- See `:help formatexpr` for more information.
 	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
+	-- Configure key mappings
+	require("config.lsp.keymaps").setup(client, bufnr)
+
+	-- Configure highlighting
+	require("config.lsp.highlighter").setup(client, bufnr)
+
+	-- Configure formatting
+	require("config.lsp.null-ls.formatters").setup(client, bufnr)
+
 	-- tagfunc
 	if client.server_capabilities.definitionProvider then
 		vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")

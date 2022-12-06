@@ -47,66 +47,6 @@ local function config()
     }
   })
 
-  local builtin = "<cmd>lua require('telescope.builtin')."
-  local lsp_prefix = "TELE::LSP:: "
-
-  local function hook()
-    local wk = require("which-key")
-    local key_opts = {
-      -- mode   Help        Affected                              Equivalent
-      -- ''     mapmode-nvo Normal/Visual/Select/Operator-pending :map
-      -- 'n'    mapmode-n	  Normal                                :nmap
-      -- 'v'    mapmode-v   Visual/Select                         :vmap
-      -- 's'    mapmode-s	  Select                                :smap
-      -- 'x'    mapmode-x	  Visual                                :xmap
-      -- 'o'    mapmode-o   Operator-pending                      :omap
-      -- '!'    mapmode-ic  Insert/Command-line                   :map!
-      -- 'i'    mapmode-i   Insert                                :imap
-      -- 'l'    mapmode-l   Insert/Command-line/Lang-Arg          :lmap
-      -- 'c'    mapmode-c   Command-line                          :cmap
-      -- 't'    mapmode-t   Terminal                              :tmap
-      mode    = "n",
-      buffer  = 0, -- local mappings
-      silent  = true, -- use `silent ` when creating keymaps
-      noremap = true, -- use `noremap` when creating keymaps
-    }
-
-    wk.register({
-      ["gd"] = {
-        builtin .. "lsp_definitions()<cr>",
-        lsp_prefix .. "definition"
-      },
-      ["gf"] = {
-        builtin .. "lsp_references()<cr>",
-        lsp_prefix .. "reference"
-      },
-      ["<space>e"] = {
-        builtin .. "diagnostics()<cr>",
-        lsp_prefix .. "diagnostics"
-      },
-      ["<space>s"] = {
-        builtin .. "lsp_document_symbols()<cr>",
-        lsp_prefix .. "document symbol"
-      },
-      ["<space>S"] = {
-        "<cmd>Telescope aerial<cr>",
-        lsp_prefix .. "document symbol"
-      },
-      ["<space>H"] = {
-        builtin .. "jumplist()<cr>",
-        lsp_prefix .. "jump list"
-      },
-      ["<space>M"] = {
-        builtin .. "marks()<cr>",
-        lsp_prefix .. "mark list"
-      },
-    },
-      key_opts
-    )
-  end
-
-  table.insert(On_Attach_hooks, hook)
-
   local wk = require("which-key")
   local key_opts = {
     mode    = "n",
