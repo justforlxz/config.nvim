@@ -80,13 +80,13 @@ local function configure_exts()
 		},
 	}) -- use default
 	dap.listeners.after.event_initialized["dapui_config"] = function()
-		dapui.open()
+		dapui.open({})
 	end
 	dap.listeners.before.event_terminated["dapui_config"] = function()
-		dapui.close()
+		dapui.close({})
 	end
 	dap.listeners.before.event_exited["dapui_config"] = function()
-		dapui.close()
+		dapui.close({})
 	end
 end
 
@@ -97,7 +97,6 @@ local function configure_debuggers()
 	require("config.dap.go").setup()
 	require("config.dap.javascript").setup()
 	require("config.dap.typescript").setup()
-	require("config.dap.cpp").setup()
 end
 
 function M.setup()

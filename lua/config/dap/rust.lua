@@ -35,6 +35,7 @@ function M.setup()
 
 	dap.configurations.c = dap.configurations.cpp
 	dap.configurations.rust = dap.configurations.cpp
+  require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "c", "cpp", "rust" } })
 end
 
 return M
