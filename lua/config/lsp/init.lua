@@ -176,6 +176,10 @@ function M.setup()
 
 	-- Inlay hints
 	-- require("config.lsp.inlay-hints").setup()
+
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.offsetEncoding = { "utf-16" }
+  require("lspconfig").clangd.setup({ capabilities = capabilities })
 end
 
 local diagnostics_active = true

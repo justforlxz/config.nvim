@@ -26,6 +26,7 @@ function M.setup(servers, options)
 			"prettierd",
 			"debugpy",
 			"clangd",
+			"clang-format",
 		},
 		auto_update = false,
 		run_on_start = true,
