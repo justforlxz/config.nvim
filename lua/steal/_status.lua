@@ -24,11 +24,10 @@ end
 
 return {
   'nvim-lualine/lualine.nvim',
-  requires = {
+  dependencies = {
     -- https://github.com/kyazdani42/nvim-web-devicons
     'kyazdani42/nvim-web-devicons',
     'arkav/lualine-lsp-progress',
   },
   config = config,
 }
-

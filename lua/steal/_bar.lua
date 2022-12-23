@@ -37,6 +37,6 @@ end
 
 return {
   'romgrk/barbar.nvim',
-  requires = {'kyazdani42/nvim-web-devicons'},
+  dependencies = {'kyazdani42/nvim-web-devicons'},
   config = config,
 }

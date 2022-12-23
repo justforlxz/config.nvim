@@ -1,11 +1,9 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-local is_startup = false
-if fn.empty(fn.glob(install_path)) > 0 then -- FIXME: why this warning?
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    is_startup = true
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({"git", "clone", "--filter=blob:none", "--single-branch", "https://github.com/folke/lazy.nvim.git",
+                   lazypath})
 end
+vim.opt.runtimepath:prepend(lazypath)
 
 local function init(dir)
     local use = require('packer').use
@@ -15,6 +13,7 @@ local function init(dir)
         return
     end
 
+    local result = {}
     for plugin in plugins:lines() do
         local part1, part2 = string.match(plugin, home .. "/[.]config/nvim/lua/(.*)_(.*)[.]lua")
         if part1 ~= nil and part2 ~= nil then
@@ -23,14 +22,26 @@ local function init(dir)
             plugin = ''
         end
         if plugin ~= '' then
-            use(require(plugin))
+            table.insert(result, require(plugin))
         end
     end
-    if is_startup then
-        require('packer').sync()
-    end
+
+    return result
 end
-return require('packer').startup(function()
-    init('steal')
-    init('plugins')
-end)
+
+-- example using a list of specs with the default options
+vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
+
+local steal = init('steal')
+local plugins = init('plugins')
+local result = {}
+
+for _, v in pairs(steal) do
+    table.insert(result, v)
+end
+
+for _, v in pairs(plugins) do
+    table.insert(result, v)
+end
+
+require("lazy").setup(result)

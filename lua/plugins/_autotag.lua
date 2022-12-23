@@ -22,7 +22,7 @@ return {
   after = {
     'nvim-cmp',
   },
-  requires = {
+  dependencies = {
     'nvim-lspconfig',
     'nvim-treesitter'
   }

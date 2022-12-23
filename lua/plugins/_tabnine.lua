@@ -73,7 +73,7 @@ end
 
 return {
   'tzachar/cmp-tabnine',
-  run = './install.sh',
-  requires = 'hrsh7th/nvim-cmp',
+  build = './install.sh',
+  dependencies = 'hrsh7th/nvim-cmp',
   config = config,
 }

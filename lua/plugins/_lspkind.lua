@@ -52,7 +52,7 @@ end
 
 return {
   'onsails/lspkind.nvim',
-  requires = {
+  dependencies = {
     'nvim-lspconfig',
   },
   config = config,

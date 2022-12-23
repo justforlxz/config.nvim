@@ -93,16 +93,15 @@ local function config()
                   },
                 },
         })
-
-        vim.cmd([[
-                nnoremap <silent> <leader>e :Neotree toggle reveal_force_cwd<CR>
-        ]])
 end
 
 return {
         'nvim-neo-tree/neo-tree.nvim',
         branch = "v2.x",
-        requires = {
+        keys = {
+          { "<leader>e", "<cmd>:Neotree toggle reveal_force_cwd<cr>", desc = "NeoTree" },
+        },
+        dependencies = {
                 -- https://github.com/kyazdani42/nvim-web-devicons
                 'kyazdani42/nvim-web-devicons', -- icon
                 'nvim-lua/plenary.nvim',

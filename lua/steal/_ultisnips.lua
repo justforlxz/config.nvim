@@ -1,4 +1,4 @@
 return {
   'SirVer/ultisnips',
-  requires = 'honza/vim-snippets',
+  dependencies = 'honza/vim-snippets',
 }

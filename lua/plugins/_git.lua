@@ -67,7 +67,7 @@ end
 
 return {
         'tpope/vim-fugitive',
-        requires = {
+        dependencies = {
                 -- GBrowser handlers
                 {
                         -- https://github.com/tpope/vim-rhubarb
@@ -78,7 +78,7 @@ return {
                 {
                         -- https://github.com/lewis6991/gitsigns.nvim
                         'lewis6991/gitsigns.nvim', -- sign column diff mark
-                        requires = {
+                        dependencies = {
                                 'nvim-lua/plenary.nvim',
                         },
                 },

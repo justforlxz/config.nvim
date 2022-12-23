@@ -16,7 +16,7 @@ return {
   after = {
     'nvim-cmp',
   },
-  requires = {
+  dependencies = {
     'jose-elias-alvarez/null-ls.nvim',
     'MunifTanjim/prettier.nvim',
     "williamboman/mason.nvim",
@@ -43,7 +43,7 @@ return {
     "folke/neodev.nvim",
     {
       "simrat39/rust-tools.nvim",
-      requires = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
+      dependencies = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
       opt = true,
       module = "rust-tools",
       ft = { "rust" },
@@ -51,7 +51,7 @@ return {
     {
       "saecki/crates.nvim",
       event = { "BufRead Cargo.toml" },
-      requires = { { "nvim-lua/plenary.nvim" } },
+      dependencies = { { "nvim-lua/plenary.nvim" } },
       config = function()
         require("crates").setup({
           null_ls = {
