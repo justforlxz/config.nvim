@@ -2,7 +2,7 @@ return {
   "mfussenegger/nvim-dap",
   opt = true,
   module = { "dap" },
-  requires = {
+  dependencies = {
     {
       "theHamsta/nvim-dap-virtual-text",
       module = { "nvim-dap-virtual-text" },
