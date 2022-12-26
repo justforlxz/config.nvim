@@ -17,7 +17,6 @@ function M.setup(servers, options)
 	require("mason-tool-installer").setup({
 		ensure_installed = {
 			"codelldb",
-			"cpptools",
 			"stylua",
 			"shfmt",
 			"shellcheck",
@@ -25,8 +24,10 @@ function M.setup(servers, options)
 			"isort",
 			"prettierd",
 			"debugpy",
-			"clangd",
+      "clangd",
 			"clang-format",
+      "cmake-language-server",
+      "eslint-lsp",
 		},
 		auto_update = false,
 		run_on_start = true,
@@ -34,7 +35,7 @@ function M.setup(servers, options)
 
 	require("mason-lspconfig").setup({
 		ensure_installed = vim.tbl_keys(servers),
-		automatic_installation = false,
+		automatic_installation = true,
 	})
 
 	-- Package installation folder

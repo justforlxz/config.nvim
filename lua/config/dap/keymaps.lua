@@ -1,7 +1,6 @@
 local M = {}
 
-local whichkey = require "which-key"
--- local legendary = require "legendary"
+local whichkey = require("which-key")
 
 -- local function keymap(lhs, rhs, desc)
 --   vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
@@ -12,6 +11,7 @@ function M.setup()
     d = {
       name = "DAP",
       R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
+      B = { "<cmd>:Telescope dap list_breakpoints<cr>", "List breakpoints" },
       E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
       C = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
       U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
@@ -19,6 +19,7 @@ function M.setup()
       c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
       d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
       e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
+      f = { "<cmd>:Telescope dap frames<cr>", "Call traces" },
       g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
       h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
       S = { "<cmd>lua require'dap.ui.widgets'.scopes()<cr>", "Scopes" },
@@ -31,6 +32,7 @@ function M.setup()
       t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
       x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
       u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+      v = { "<cmd>:Telescope dap variables<cr>", "List variables" },
     },
   }
   local opts = {
@@ -42,7 +44,7 @@ function M.setup()
     nowait = false,
   }
   whichkey.register(keymap, opts)
-  --- require("legendary.integrations.which-key").bind_whichkey(keymap, opts, false)
+  require("legendary.integrations.which-key").bind_whichkey(keymap, opts, false)
 
   local keymap_v = {
     d = {
@@ -59,7 +61,7 @@ function M.setup()
     nowait = false,
   }
   whichkey.register(keymap_v, opts)
-  --- require("legendary.integrations.which-key").bind_whichkey(keymap_v, opts, false)
+  require("legendary.integrations.which-key").bind_whichkey(keymap_v, opts, false)
 end
 
 return M

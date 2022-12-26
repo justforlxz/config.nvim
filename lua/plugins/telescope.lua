@@ -9,6 +9,7 @@ local function config()
   require("telescope").load_extension("ui-select")
   require('telescope').load_extension('aerial')
   require('telescope').load_extension('fzf')
+  require('telescope').load_extension('dap')
 
   local actions = require("telescope.actions")
 
@@ -88,6 +89,7 @@ local M = {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     },
+    "nvim-telescope/telescope-dap.nvim",
     'stevearc/aerial.nvim',
   },
   after = {

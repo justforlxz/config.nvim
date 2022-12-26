@@ -26,3 +26,19 @@ vim.cmd([[
 ]])
 
 vim.g.python_path = "/opt/homebrew/opt/python/libexec/bin/python"
+
+-- set filetype
+vim.filetype.add({
+  extension = {
+    qml = "qmljs",
+    qmltypes = "qmljs",
+    qmlproject = "qmljs",
+    qss = "css",
+    qrc = "xml",
+    frag = "glsl",
+    vert = "glsl",
+  },
+  filename = {
+    qmldir = "qmljs"
+  }
+})

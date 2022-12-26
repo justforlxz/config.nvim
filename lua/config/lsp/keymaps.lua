@@ -65,6 +65,10 @@ local function keymappings(client, bufnr)
       builtin .. "diagnostics()<cr>",
       lsp_prefix .. "diagnostics",
     },
+    E = {
+      "<cmd>lua vim.diagnostic.open_float()<CR>",
+      lsp_prefix .. "float diagnostic",
+    },
     s = {
       builtin .. "lsp_document_symbols()<cr>",
       lsp_prefix .. "document symbol",
@@ -94,8 +98,8 @@ local function keymappings(client, bufnr)
     h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
     I = { "<cmd>Telescope lsp_implementations<CR>", "Goto Implementation" },
     b = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
-    p = { "<cmd>Lspsaga peek_definitaion<CR>", "Preview Definition" },
-    f = { "<cmd>lsp_references()<CR>", "TELE::LSP:: reference" },
+    p = { "<cmd>Lspsaga peek_definition<CR>", "Preview Definition" },
+    f = { "<cmd>Telescope lsp_references()<CR>", "TELE::LSP:: reference" },
   }
 
   local keymap_v_l = {
