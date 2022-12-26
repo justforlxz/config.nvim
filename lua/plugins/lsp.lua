@@ -44,7 +44,7 @@ local M = {
     {
       "simrat39/rust-tools.nvim",
       dependencies = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
-      opt = true,
+      lazy = true,
       module = "rust-tools",
       ft = { "rust" },
     },

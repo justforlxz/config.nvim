@@ -1,6 +1,6 @@
 return {
   "mfussenegger/nvim-dap",
-  opt = true,
+  lazy = true,
   module = { "dap" },
   dependencies = {
     {
@@ -47,7 +47,7 @@ return {
     },
     {
       "microsoft/vscode-js-debug",
-      opt = true,
+      lazy = true,
       run = "npm install --legacy-peer-deps && npm run compile",
       disable = false,
     },

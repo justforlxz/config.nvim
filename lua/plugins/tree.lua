@@ -97,6 +97,7 @@ local M = {
   keys = {
     { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
   },
+  lazy = false,
   cmd = "Neotree",
   dependencies = { -- https://github.com/kyazdani42/nvim-web-devicons
     "kyazdani42/nvim-web-devicons", -- icon
