@@ -4,6 +4,6 @@ lua require('basic')
 " 快捷键映射
 lua require('keybinds')
 
-" Packer插件管理
-lua require('plugins')
+" 插件管理
+lua require('init')
 
