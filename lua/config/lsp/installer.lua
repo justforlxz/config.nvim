@@ -29,7 +29,7 @@ function M.setup(servers, options)
       "cmake-language-server",
       "eslint-lsp",
 		},
-		auto_update = false,
+		auto_update = true,
 		run_on_start = true,
 	})
 
@@ -50,7 +50,6 @@ function M.setup(servers, options)
 			local opts = vim.tbl_deep_extend("force", options, servers["sumneko_lua"] or {})
 			require("neodev").setup({ opts })
 			-- then setup your lsp server as usual
-			local lspconfig = require("lspconfig")
 			lspconfig.sumneko_lua.setup({
 				settings = {
 					Lua = {

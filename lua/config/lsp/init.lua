@@ -140,22 +140,19 @@ function M.on_attach(client, bufnr)
   end
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.foldingRange = {
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
   lineFoldingOnly = true,
 }
-capabilities.textDocument.completion.completionItem.resolveSupport = {
+M.capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     "documentation",
     "detail",
     "additionalTextEdits",
   },
 }
-
---- M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
-M.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local opts = {
   on_attach = M.on_attach,
@@ -176,7 +173,7 @@ function M.setup()
   require("config.lsp.installer").setup(servers, opts)
 
   -- Inlay hints
-  -- require("config.lsp.inlay-hints").setup()
+  require("config.lsp.inlay-hints").setup()
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.offsetEncoding = { "utf-16" }
