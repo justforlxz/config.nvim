@@ -76,6 +76,7 @@ local M = {
   build = './install.sh',
   dependencies = 'hrsh7th/nvim-cmp',
   config = config,
+  enabled = false,
 }
 
 return M

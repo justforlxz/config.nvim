@@ -23,7 +23,6 @@ local M = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     { "jayp0521/mason-null-ls.nvim" },
-    "jose-elias-alvarez/null-ls.nvim",
     {
       "j-hui/fidget.nvim",
       config = function()
