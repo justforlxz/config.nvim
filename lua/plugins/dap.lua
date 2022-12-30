@@ -48,12 +48,10 @@ return {
     {
       "microsoft/vscode-js-debug",
       lazy = true,
-      run = "npm install --legacy-peer-deps && npm run compile",
-      disable = false,
+      build = "npm install --legacy-peer-deps && npm run compile",
     },
   },
   config = function()
     require("config.dap").setup()
   end,
-  disable = false,
 }

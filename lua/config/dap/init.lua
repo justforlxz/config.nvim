@@ -102,7 +102,7 @@ local function configure_exts()
     },
     controls = {
       -- Requires Neovim nightly (or 0.8 when released)
-      enabled = true,
+      enabled = false,
       -- Display controls in this element
       element = "repl",
       icons = {
@@ -144,12 +144,12 @@ local function configure_exts()
 end
 
 local function configure_debuggers()
-  require("config.dap.lua").setup()
-  require("config.dap.python").setup()
-  require("config.dap.rust").setup()
-  require("config.dap.go").setup()
-  require("config.dap.javascript").setup()
-  require("config.dap.typescript").setup()
+  require("config.dap.lang.lua").setup()
+  require("config.dap.lang.python").setup()
+  require("config.dap.lang.rust").setup()
+  require("config.dap.lang.go").setup()
+  require("config.dap.lang.javascript").setup()
+  require("config.dap.lang.typescript").setup()
 end
 
 function M.setup()

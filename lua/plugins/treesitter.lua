@@ -65,7 +65,7 @@ end
 
 local M = {
         'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+        build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
         config = config,
         dependencies = {
                 'nvim-treesitter/playground',

@@ -1,13 +1,13 @@
 local M = {}
 
-local nls = require "null-ls"
-local nls_utils = require "null-ls.utils"
+local nls = require("null-ls")
+local nls_utils = require("null-ls.utils")
 local b = nls.builtins
 
 local with_diagnostics_code = function(builtin)
-  return builtin.with {
+  return builtin.with({
     diagnostics_format = "#{m} [#{c}]",
-  }
+  })
 end
 
 -- local with_root_file = function(builtin, file)
@@ -24,51 +24,57 @@ local sources = {
   b.formatting.shfmt,
   b.formatting.shellharden,
   b.formatting.fixjson,
-  b.formatting.black.with { extra_args = { "--fast" } },
+  b.formatting.black.with({ extra_args = { "--fast" } }),
   b.formatting.isort,
   b.formatting.stylua,
-  b.formatting.google_java_format,
+  b.formatting.clang_format,
+  b.formatting.cmake_format,
+  b.formatting.qmlformat,
+  b.formatting.rustfmt,
   -- with_root_file(b.formatting.stylua, "stylua.toml"),
 
   -- diagnostics
   b.diagnostics.write_good,
   -- b.diagnostics.markdownlint,
   b.diagnostics.eslint_d,
-  b.diagnostics.flake8.with { extra_args = { "--max-line-length=100"}},
+  b.diagnostics.flake8.with({ extra_args = { "--max-line-length=100" } }),
   b.diagnostics.tsc,
   -- b.diagnostics.selene,
-  -- b.diagnostics.codespell,
+  b.diagnostics.codespell,
   -- with_root_file(b.diagnostics.selene, "selene.toml"),
   with_diagnostics_code(b.diagnostics.shellcheck),
   b.diagnostics.zsh,
-  -- b.diagnostics.cspell.with {
-  --   filetypes = { "python", "rust", "typescript" },
-  -- },
-  -- b.diagnostics.stylelint,
+  b.diagnostics.cspell.with({
+    filetypes = { "python", "rust", "typescript", "cpp" },
+  }),
+  b.diagnostics.stylelint,
+  b.diagnostics.cppcheck,
+  b.diagnostics.qmllint,
 
   -- code actions
-  b.code_actions.gitsigns.with {
+  b.code_actions.gitsigns.with({
     disabled_filetypes = { "NeogitCommitMessage" },
-  },
+  }),
   b.code_actions.eslint_d,
   b.code_actions.gitrebase,
   -- b.code_actions.refactoring,
   b.code_actions.proselint,
   b.code_actions.shellcheck,
+  b.code_actions.cspell,
 
   -- hover
   b.hover.dictionary,
 }
 
 function M.setup(opts)
-  nls.setup {
+  nls.setup({
     -- debug = true,
     debounce = 150,
     save_after_format = false,
     sources = sources,
     on_attach = opts.on_attach,
-    root_dir = nls_utils.root_pattern ".git",
-  }
+    root_dir = nls_utils.root_pattern(".git"),
+  })
 end
 
 return M

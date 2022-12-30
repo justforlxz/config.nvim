@@ -18,26 +18,20 @@ local function config()
     -- 'l'    mapmode-l   Insert/Command-line/Lang-Arg          :lmap
     -- 'c'    mapmode-c   Command-line                          :cmap
     -- 't'    mapmode-t   Terminal                              :tmap
-    mode    = "n",
-    prefix  = "<leader>l",
-    buffer  = nil, -- Global mappings.
-    silent  = true,
-    noremap = true,
+    mode = "v",
+    prefix = "<leader>l",
   }
 
-  wk.register(
-    {
-      d = { "<plug>TranslateW", "TRANS:: look up google translate"}
-    },
-    key_opts
-  )
+  wk.register({
+    d = { ":'<,'>TranslateW", "TRANS:: look up google translate" },
+  }, key_opts)
 
-  vim.g.translator_default_engines = {'google'}
-  vim.g.translator_window_type = 'preview'
+  vim.g.translator_default_engines = { "google" }
+  vim.g.translator_window_type = "preview"
 end
 
 local M = {
-  'voldikss/vim-translator',
+  "voldikss/vim-translator",
   config = config,
 }
 

@@ -5,7 +5,7 @@ end
 local M = {
   'iamcco/markdown-preview.nvim',
   config = config,
-  run = 'cd app && yarn install'
+  build = 'cd app && yarn install'
 }
 
 return M
