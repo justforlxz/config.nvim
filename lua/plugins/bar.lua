@@ -15,29 +15,26 @@ local function config()
     -- 'l'    mapmode-l   Insert/Command-line/Lang-Arg          :lmap
     -- 'c'    mapmode-c   Command-line                          :cmap
     -- 't'    mapmode-t   Terminal                              :tmap
-    mode    = "n",
-    prefix  = "<space>",
-    buffer  = nil, -- Global mappings.
-    silent  = true,
+    mode = "n",
+    prefix = "<space>",
+    buffer = nil, -- Global mappings.
+    silent = true,
     noremap = true,
   }
 
-  wk.register(
-    {
-      k = { "<cmd>BufferPrevious<cr>",     "BAR:: previous buffer" },
-      j = { "<cmd>BufferNext<cr>",         "BAR:: next buffer" },
-      h = { "<cmd>BufferMovePrevious<cr>", "BAR:: move buffer to previous" },
-      l = { "<cmd>BufferMoveNext<cr>",     "BAR:: move buffer to next" },
-      d = { "<cmd>BufferClose<cr>",        "BAR:: close buffer" },
-      p = { "<cmd>BufferPick<cr>",         "BAR:: buffer-picking mode" },
-    },
-    key_opts
-  )
+  wk.register({
+    k = { "<cmd>BufferPrevious<cr>", "BAR:: previous buffer" },
+    j = { "<cmd>BufferNext<cr>", "BAR:: next buffer" },
+    h = { "<cmd>BufferMovePrevious<cr>", "BAR:: move buffer to previous" },
+    l = { "<cmd>BufferMoveNext<cr>", "BAR:: move buffer to next" },
+    d = { "<cmd>BufferClose<cr>", "BAR:: close buffer" },
+    p = { "<cmd>BufferPick<cr>", "BAR:: buffer-picking mode" },
+  }, key_opts)
 end
 
 local M = {
-  'romgrk/barbar.nvim',
-  dependencies = {'kyazdani42/nvim-web-devicons'},
+  "romgrk/barbar.nvim",
+  dependencies = { "kyazdani42/nvim-web-devicons" },
   config = config,
 }
 

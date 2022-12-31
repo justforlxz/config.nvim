@@ -13,9 +13,6 @@ end
 local M = {
   'neovim/nvim-lspconfig',
   config = config,
-  after = {
-    'nvim-cmp',
-  },
   dependencies = {
     'jose-elias-alvarez/null-ls.nvim',
     'MunifTanjim/prettier.nvim',

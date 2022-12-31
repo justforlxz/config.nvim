@@ -19,9 +19,6 @@ end
 local M = {
   'windwp/nvim-ts-autotag',
   config = config,
-  after = {
-    'nvim-cmp',
-  },
   dependencies = {
     'nvim-lspconfig',
     'nvim-treesitter'
