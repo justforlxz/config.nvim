@@ -32,6 +32,7 @@ function M.setup(servers, options)
       "eslint_d",
       "flake8",
       "codespell",
+      "shellharden"
 		},
 		auto_update = true,
 		run_on_start = true,

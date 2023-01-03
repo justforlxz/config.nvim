@@ -163,7 +163,10 @@ local M = {
     "saadparwaiz1/cmp_luasnip",
   },
   config = config,
-  event = "InsertEnter", 
+  event = {
+    "CmdlineEnter",
+    "InsertEnter",
+  },
 }
 
 return M

@@ -23,7 +23,7 @@ local M = {
     'nvim-lspconfig',
     'nvim-treesitter'
   },
-  event = "BufRead",
+  event = "InsertEnter",
 }
 
 return M

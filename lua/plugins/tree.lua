@@ -2,6 +2,7 @@
 -- Description:
 -- file explorer
 local function config()
+    vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
     require("neo-tree").setup({
         default_component_configs = {
             container = {
@@ -94,15 +95,23 @@ end
 local M = {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    dependencies = { -- https://github.com/kyazdani42/nvim-web-devicons
-    "kyazdani42/nvim-web-devicons", -- icon
-    "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim"},
+    dependencies = {
+        -- https://github.com/kyazdani42/nvim-web-devicons
+        "kyazdani42/nvim-web-devicons",
+        -- icon
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim"
+    },
     config = config,
+    lazy = false,
     keys = {{
         "<leader>e",
         "<cmd>Neotree toggle reveal_force_cwd<CR>",
         desc = "open tree"
-    }}
+    }},
+    init = function()
+        vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+    end
 }
 
 return M

@@ -1,41 +1,57 @@
 -- https://github.com/romgrk/barbar.nvim
-
 local function config()
-  local wk = require("which-key")
-  local key_opts = {
-    -- mode   Help        Affected                              Equivalent
-    -- ''     mapmode-nvo Normal/Visual/Select/Operator-pending :map
-    -- 'n'    mapmode-n	  Normal                                :nmap
-    -- 'v'    mapmode-v   Visual/Select                         :vmap
-    -- 's'    mapmode-s	  Select                                :smap
-    -- 'x'    mapmode-x	  Visual                                :xmap
-    -- 'o'    mapmode-o   Operator-pending                      :omap
-    -- '!'    mapmode-ic  Insert/Command-line                   :map!
-    -- 'i'    mapmode-i   Insert                                :imap
-    -- 'l'    mapmode-l   Insert/Command-line/Lang-Arg          :lmap
-    -- 'c'    mapmode-c   Command-line                          :cmap
-    -- 't'    mapmode-t   Terminal                              :tmap
-    mode = "n",
-    prefix = "<space>",
-    buffer = nil, -- Global mappings.
-    silent = true,
-    noremap = true,
-  }
+  vim.api.nvim_create_autocmd('BufWinEnter', {
+    pattern = '*',
+    callback = function()
+      if vim.bo.filetype == 'neo-tree' then
+        require'bufferline.api'.set_offset(31, 'FileTree')
+      end
+    end
+  })
 
-  wk.register({
-    k = { "<cmd>BufferPrevious<cr>", "BAR:: previous buffer" },
-    j = { "<cmd>BufferNext<cr>", "BAR:: next buffer" },
-    h = { "<cmd>BufferMovePrevious<cr>", "BAR:: move buffer to previous" },
-    l = { "<cmd>BufferMoveNext<cr>", "BAR:: move buffer to next" },
-    d = { "<cmd>BufferClose<cr>", "BAR:: close buffer" },
-    p = { "<cmd>BufferPick<cr>", "BAR:: buffer-picking mode" },
-  }, key_opts)
+  vim.api.nvim_create_autocmd('BufWinLeave', {
+    pattern = '*',
+    callback = function()
+      if vim.fn.expand('<afile>'):match('neo-tree') then
+        require'bufferline.api'.set_offset(0)
+      end
+    end
+  })
 end
 
 local M = {
-  "romgrk/barbar.nvim",
-  dependencies = { "kyazdani42/nvim-web-devicons" },
-  config = config,
+    "romgrk/barbar.nvim",
+    dependencies = {
+      "kyazdani42/nvim-web-devicons",
+      "nvim-neo-tree/neo-tree.nvim",
+    },
+    config = config,
+    lazy = false,
+    keys = {{
+        "<space>k",
+        "<cmd>BufferPrevious<cr>",
+        desc = "BAR:: previous buffer"
+    }, {
+        "<space>j",
+        "<cmd>BufferNext<cr>",
+        desc = "BAR:: next buffer"
+    }, {
+        "<space>h",
+        "<cmd>BufferMovePrevious<cr>",
+        desc = "BAR:: move buffer to previous"
+    }, {
+        "<space>l",
+        "<cmd>BufferMoveNext<cr>",
+        desc = "BAR:: move buffer to next"
+    }, {
+        "<space>d",
+        "<cmd>BufferClose<cr>",
+        desc = "BAR:: close buffer"
+    }, {
+        "<space>p",
+        "<cmd>BufferPick<cr>",
+        desc = "BAR:: buffer-picking mode"
+    }}
 }
 
 return M

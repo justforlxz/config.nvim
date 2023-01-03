@@ -4,24 +4,25 @@
 -- quick comment plugin
 
 local function config()
-  vim.g.NERDSpaceDelims = 1
-  vim.g.NERDCreateDefaultMappings = 0
-
   local wk = require("which-key")
 
   wk.register({
-    ["<C-/>"] = { "<Plug>NERDCommenterToggle", "Toggle comment", mode = 'n'}
+    ["<C-/>"] = { "<Plug>NERDCommenterToggle", "Toggle comment", mode = "n" },
   })
 
   wk.register({
-    ["<C-/>"] = { "<Plug>NERDCommenterToggle", "Toggle comment", mode = 'v'}
+    ["<C-/>"] = { "<Plug>NERDCommenterToggle", "Toggle comment", mode = "v" },
   })
 end
 
 local M = {
-  'preservim/nerdcommenter',
+  "preservim/nerdcommenter",
   config = config,
-  dependencies = { "folke/which-key.nvim"},
+  dependencies = { "folke/which-key.nvim" },
+  init = function()
+    vim.g.NERDCreateDefaultMappings = 0
+    vim.g.NERDSpaceDelims = 1
+  end,
 }
 
 return M
