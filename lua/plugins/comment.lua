@@ -21,6 +21,7 @@ end
 local M = {
   'preservim/nerdcommenter',
   config = config,
+  dependencies = { "folke/which-key.nvim"},
 }
 
 return M

@@ -74,6 +74,7 @@ end
 local M = {
   'folke/which-key.nvim',
   config = config,
+  lazy = true,
 }
 
 return M

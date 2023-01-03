@@ -3,6 +3,7 @@ local function config()
   saga.init_lsp_saga({
     -- "single" | "double" | "rounded" | "bold" | "plus"
     border_style = "rounded",
+    code_action_icon = '',
   })
 end
 
@@ -11,7 +12,7 @@ local M = {
   branch = "main",
   config = config,
   dependencies = { "neovim/nvim-lspconfig" },
+  event = "BufRead",
 }
 
 return M
-

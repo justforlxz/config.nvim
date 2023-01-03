@@ -9,6 +9,7 @@ end
 local M = {
   'lambdalisue/suda.vim',
   config = config,
+  cmd = {"SudaRead", "SudaWrite"}
 }
 
 return M

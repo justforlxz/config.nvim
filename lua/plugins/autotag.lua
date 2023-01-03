@@ -22,7 +22,8 @@ local M = {
   dependencies = {
     'nvim-lspconfig',
     'nvim-treesitter'
-  }
+  },
+  event = "BufRead",
 }
 
 return M

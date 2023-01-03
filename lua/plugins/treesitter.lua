@@ -69,7 +69,8 @@ local M = {
         config = config,
         dependencies = {
                 'nvim-treesitter/playground',
-        }
+        },
+        event = "BufRead",
 }
 
 return M

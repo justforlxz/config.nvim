@@ -56,6 +56,7 @@ local M = {
     'nvim-lspconfig',
   },
   config = config,
+  event = "BufRead",
 }
 
 return M

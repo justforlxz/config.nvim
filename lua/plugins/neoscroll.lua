@@ -20,6 +20,7 @@ end
 local M = {
   'karb94/neoscroll.nvim',
   config = config,
+  event = "BufRead"
 }
 
 return M

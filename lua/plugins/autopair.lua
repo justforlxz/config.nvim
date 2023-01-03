@@ -11,6 +11,7 @@ end
 local M = {
   'windwp/nvim-autopairs',
   config = config,
+  event = "BufRead",
 }
 
 return M

@@ -13,6 +13,7 @@ end
 local M = {
   'neovim/nvim-lspconfig',
   config = config,
+  event = "BufRead",
   dependencies = {
     'jose-elias-alvarez/null-ls.nvim',
     'MunifTanjim/prettier.nvim',

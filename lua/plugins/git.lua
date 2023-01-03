@@ -83,6 +83,7 @@ local M = {
                         },
                 },
                 'dinhhuy258/git.nvim',
+  "folke/which-key.nvim",
         },
         config = config,
 }

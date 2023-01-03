@@ -1,7 +1,5 @@
 return {
   "mfussenegger/nvim-dap",
-  lazy = true,
-  module = { "dap" },
   dependencies = {
     {
       "theHamsta/nvim-dap-virtual-text",
@@ -47,11 +45,11 @@ return {
     },
     {
       "microsoft/vscode-js-debug",
-      lazy = true,
       build = "npm install --legacy-peer-deps && npm run compile",
     },
   },
   config = function()
     require("config.dap").setup()
   end,
+  event = "BufRead",
 }

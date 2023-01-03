@@ -59,26 +59,11 @@ local function config()
     -- color
     other_win_hl_color = '#44cc41'
   })
-
-  local wk = require("which-key")
-  local key_opts = {
-    mode = "n",
-    buffer = 0, -- local mappings
-    silent = true, -- use `silent ` when creating keymaps
-    noremap = true -- use `noremap` when creating keymaps
-  }
-
-  -- FIXME: 退出的时候希望能弹窗提醒
-  wk.register({
-    ["<space>qq"] = { "<cmd>q<CR>", "Window:: quit vim" },
-    ["<space>qf"] = { "<cmd>q!<CR>", "Window:: force quit vim" },
-    ["<space>qs"] = { "<cmd>wq<CR>", "Window:: save and quit vim" },
-  }, key_opts)
 end
 
 local M = {
   's1n7ax/nvim-window-picker',
-  config = config
+  config = config,
 }
 
 return M

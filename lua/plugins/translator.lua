@@ -33,6 +33,7 @@ end
 local M = {
   "voldikss/vim-translator",
   config = config,
+  cmd = {"TranslateW"},
 }
 
 return M

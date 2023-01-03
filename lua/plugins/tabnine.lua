@@ -50,6 +50,7 @@ local M = {
   build = "./install.sh",
   dependencies = { "hrsh7th/nvim-cmp" },
   config = config,
+  event = "BufRead",
 }
 
 return M
