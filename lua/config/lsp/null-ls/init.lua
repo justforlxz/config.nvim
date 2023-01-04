@@ -31,11 +31,12 @@ local sources = {
   b.formatting.cmake_format,
   b.formatting.qmlformat,
   b.formatting.rustfmt,
+  b.formatting.latexindent,
   -- with_root_file(b.formatting.stylua, "stylua.toml"),
 
   -- diagnostics
   b.diagnostics.write_good,
-  -- b.diagnostics.markdownlint,
+  b.diagnostics.markdownlint,
   b.diagnostics.eslint_d,
   b.diagnostics.flake8.with({ extra_args = { "--max-line-length=100" } }),
   b.diagnostics.tsc,
@@ -50,6 +51,7 @@ local sources = {
   b.diagnostics.stylelint,
   b.diagnostics.cppcheck,
   b.diagnostics.qmllint,
+  b.diagnostics.chktex,
 
   -- code actions
   b.code_actions.gitsigns.with({

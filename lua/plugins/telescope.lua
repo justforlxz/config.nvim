@@ -68,11 +68,17 @@ local M = {
     "neovim/nvim-lspconfig",
   },
   config = config,
+  lazy = false,
   keys = {
     {
       "<leader>E",
       "<cmd>lua require('telescope.builtin').find_files()<cr>",
       desc = "TELE:: search filename",
+    },
+    {
+      "<leader>/",
+      "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>",
+      desc = "TELE:: search in files",
     },
     {
       "<leader>R",
