@@ -2,7 +2,6 @@
 -- Description:
 -- file explorer
 local function config()
-    vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
     require("neo-tree").setup({
         default_component_configs = {
             container = {
@@ -111,6 +110,7 @@ local M = {
     }},
     init = function()
         vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+        vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
     end
 }
 

@@ -30,7 +30,8 @@ local function config()
       },
     },
     pickers = {
-      find_files = { theme },
+      find_files = { theme, cwd = vim.fn.expand("%:p:h") },
+      live_grep = { theme, cwd = vim.fn.expand("%:p:h") },
     },
     extensions = {
       ["ui-select"] = { theme },
