@@ -34,6 +34,7 @@ local function config()
     "graphql",
     "vala",
     "vim",
+    "toml",
   }
   local parsers = {}
   for _, parser in ipairs(extra_parsers) do
