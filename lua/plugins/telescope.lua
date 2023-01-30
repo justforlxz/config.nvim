@@ -68,7 +68,7 @@ local M = {
     "neovim/nvim-lspconfig",
   },
   config = config,
-  lazy = false,
+  cmd = "Telescope",
   keys = {
     {
       "<leader>E",

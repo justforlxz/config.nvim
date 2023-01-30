@@ -37,17 +37,17 @@ local sources = {
   -- diagnostics
   b.diagnostics.write_good,
   b.diagnostics.markdownlint,
-  b.diagnostics.eslint_d,
+  b.diagnostics.eslint,
   b.diagnostics.flake8.with({ extra_args = { "--max-line-length=100" } }),
   b.diagnostics.tsc,
   -- b.diagnostics.selene,
-  b.diagnostics.codespell,
+  --b.diagnostics.codespell,
   -- with_root_file(b.diagnostics.selene, "selene.toml"),
   with_diagnostics_code(b.diagnostics.shellcheck),
   b.diagnostics.zsh,
-  b.diagnostics.cspell.with({
-    filetypes = { "python", "rust", "typescript", "cpp" },
-  }),
+  --b.diagnostics.cspell.with({
+  --  filetypes = { "python", "rust", "typescript", "cpp" },
+  --}),
   b.diagnostics.stylelint,
   b.diagnostics.cppcheck,
   b.diagnostics.qmllint,
@@ -57,12 +57,12 @@ local sources = {
   b.code_actions.gitsigns.with({
     disabled_filetypes = { "NeogitCommitMessage" },
   }),
-  b.code_actions.eslint_d,
+  b.code_actions.eslint,
   b.code_actions.gitrebase,
   -- b.code_actions.refactoring,
   b.code_actions.proselint,
   b.code_actions.shellcheck,
-  b.code_actions.cspell,
+  --b.code_actions.cspell,
 
   -- hover
   b.hover.dictionary,

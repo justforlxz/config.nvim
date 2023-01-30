@@ -25,8 +25,7 @@ end
 local M = {
   'nvim-lualine/lualine.nvim',
   dependencies = {
-    -- https://github.com/kyazdani42/nvim-web-devicons
-    'kyazdani42/nvim-web-devicons',
+    {"nvim-tree/nvim-web-devicons"},
     'arkav/lualine-lsp-progress',
   },
   config = config,

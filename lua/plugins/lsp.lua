@@ -39,13 +39,6 @@ local M = {
     },
     "folke/neodev.nvim",
     {
-      "simrat39/rust-tools.nvim",
-      dependencies = { "nvim-lua/plenary.nvim", "rust-lang/rust.vim" },
-      lazy = true,
-      module = "rust-tools",
-      ft = { "rust" },
-    },
-    {
       "saecki/crates.nvim",
       event = { "BufRead Cargo.toml" },
       dependencies = { { "nvim-lua/plenary.nvim" } },

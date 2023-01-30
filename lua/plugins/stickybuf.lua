@@ -46,6 +46,7 @@ end
 local M = {
   'stevearc/stickybuf.nvim',
   config = config,
+  event = 'BufEnter',
 }
 
 return M

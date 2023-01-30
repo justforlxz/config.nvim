@@ -27,26 +27,6 @@ return {
         })
       end,
     },
-    {
-      "mfussenegger/nvim-dap-python",
-      module = { "dap-python" },
-    },
-    {
-      "leoluz/nvim-dap-go",
-      module = "dap-go",
-    },
-    {
-      "jbyuki/one-small-step-for-vimkind",
-      module = "osv",
-    },
-    {
-      "mxsdev/nvim-dap-vscode-js",
-      module = { "dap-vscode-js" },
-    },
-    {
-      "microsoft/vscode-js-debug",
-      build = "npm install --legacy-peer-deps && npm run compile",
-    },
   },
   config = function()
     require("config.dap").setup()

@@ -22,7 +22,7 @@ end
 local M = {
     "romgrk/barbar.nvim",
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      {"nvim-tree/nvim-web-devicons"},
       "nvim-neo-tree/neo-tree.nvim",
     },
     config = config,

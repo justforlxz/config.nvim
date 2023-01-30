@@ -145,10 +145,7 @@ end
 
 local function configure_debuggers()
   require("config.dap.lang.lua").setup()
-  require("config.dap.lang.python").setup()
   require("config.dap.lang.rust").setup()
-  require("config.dap.lang.go").setup()
-  require("config.dap.lang.javascript").setup()
   require("config.dap.lang.typescript").setup()
 end
 

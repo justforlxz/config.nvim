@@ -27,11 +27,10 @@ function M.setup(servers, options)
       "clangd",
 			"clang-format",
       "cmake-language-server",
-      "eslint-lsp",
-      "cspell",
+      --"cspell",
       "eslint_d",
       "flake8",
-      "codespell",
+      --"codespell",
       "shellharden",
       "ltex-ls",
 		},
@@ -63,35 +62,6 @@ function M.setup(servers, options)
 							callSnippet = "Replace",
 						},
 					},
-				},
-			})
-		end,
-		["rust_analyzer"] = function()
-			local opts = vim.tbl_deep_extend("force", options, servers["rust_analyzer"] or {})
-
-			-- DAP settings - https://github.com/simrat39/rust-tools.nvim#a-better-debugging-experience
-			local extension_path = install_root_dir .. "/packages/codelldb/extension/"
-			local codelldb_path = extension_path .. "adapter/codelldb"
-			local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-			require("rust-tools").setup({
-				tools = {
-					autoSetHints = false,
-					executor = require("rust-tools/executors").toggleterm,
-					hover_actions = {
-						border = "solid",
-					},
-					on_initialized = function()
-						vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
-							pattern = { "*.rs" },
-							callback = function()
-								vim.lsp.codelens.refresh()
-							end,
-						})
-					end,
-				},
-				server = opts,
-				dap = {
-					adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
 				},
 			})
 		end,
