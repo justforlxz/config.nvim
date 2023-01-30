@@ -36,24 +36,25 @@
 local function config()
   vim.g.rainbow_conf = {
     guifgs = {
-      '#61afef',
-      '#e5c07b',
-      '#c678dd',
-      '#56b6c2',
-      '#be5046',
-      '#d19a66',
-      '#98c379',
+      "#61afef",
+      "#e5c07b",
+      "#c678dd",
+      "#56b6c2",
+      "#be5046",
+      "#d19a66",
+      "#98c379",
     },
     separately = {
       markdown = 0,
-    }
+    },
   }
   vim.g.rainbow_active = 1
 end
 
 local M = {
-  'luochen1990/rainbow',
+  "luochen1990/rainbow",
   config = config,
+  event = "BufEnter",
 }
 
 return M

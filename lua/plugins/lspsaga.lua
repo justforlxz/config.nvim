@@ -10,7 +10,6 @@ local M = {
   "glepnir/lspsaga.nvim",
   config = config,
   dependencies = { {"neovim/nvim-lspconfig"}, {"nvim-tree/nvim-web-devicons"} },
-  event = "BufRead",
 }
 
 return M

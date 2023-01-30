@@ -31,5 +31,5 @@ return {
   config = function()
     require("config.dap").setup()
   end,
-  event = "BufRead",
+  event = "BufEnter",
 }

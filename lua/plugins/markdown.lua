@@ -6,7 +6,7 @@ local M = {
   'iamcco/markdown-preview.nvim',
   config = config,
   build = 'cd app && yarn install',
-  event = "BufRead",
+  event = "BufEnter",
 }
 
 return M

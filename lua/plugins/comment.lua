@@ -3,26 +3,25 @@
 -- Description:
 -- quick comment plugin
 
-local function config()
-  local wk = require("which-key")
-
-  wk.register({
-    ["<C-/>"] = { "<Plug>NERDCommenterToggle", "Toggle comment", mode = "n" },
-  })
-
-  wk.register({
-    ["<C-/>"] = { "<Plug>NERDCommenterToggle", "Toggle comment", mode = "v" },
-  })
-end
-
-local M = {
+return {
   "preservim/nerdcommenter",
-  config = config,
   dependencies = { "folke/which-key.nvim" },
   init = function()
     vim.g.NERDCreateDefaultMappings = 0
     vim.g.NERDSpaceDelims = 1
   end,
+  keys = {
+    {
+      "<C-/>",
+      "<Plug>NERDCommenterToggle",
+      desc = "Toggle comment",
+      mode = "n",
+    },
+    {
+      "<C-/>",
+      "<Plug>NERDCommenterToggle",
+      desc = "Toggle comment",
+      mode = "v",
+    },
+  },
 }
-
-return M

@@ -12,9 +12,7 @@ local function config()
   })
 end
 
-local M = {
+return {
   'norcalli/nvim-colorizer.lua',
   config = config,
 }
-
-return M

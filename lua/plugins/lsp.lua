@@ -7,16 +7,16 @@
 -- leads to a error. So we have to put all local functions at the start of
 -- config()
 local function config()
-  require('config.lsp').setup()
+  require("config.lsp").setup()
 end
 
-local M = {
-  'neovim/nvim-lspconfig',
+return {
+  "neovim/nvim-lspconfig",
   config = config,
-  event = "BufRead",
+  event = "BufEnter",
   dependencies = {
-    'jose-elias-alvarez/null-ls.nvim',
-    'MunifTanjim/prettier.nvim',
+    "jose-elias-alvarez/null-ls.nvim",
+    "MunifTanjim/prettier.nvim",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -24,7 +24,7 @@ local M = {
     {
       "j-hui/fidget.nvim",
       config = function()
-        require("fidget").setup {}
+        require("fidget").setup({})
       end,
     },
     { "b0o/schemastore.nvim", module = { "schemastore" } },
@@ -33,7 +33,7 @@ local M = {
       "SmiteshP/nvim-navic",
       -- "alpha2phi/nvim-navic",
       config = function()
-        require("nvim-navic").setup {}
+        require("nvim-navic").setup({})
       end,
       module = { "nvim-navic" },
     },
@@ -52,14 +52,12 @@ local M = {
       end,
     },
     --- go
-   {
+    {
       "ray-x/go.nvim",
       ft = { "go" },
       config = function()
         require("go").setup()
       end,
-    }
-  }
+    },
+  },
 }
-
-return M

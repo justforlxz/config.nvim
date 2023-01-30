@@ -33,6 +33,7 @@ local function config()
     "hlsl",
     "graphql",
     "vala",
+    "vim",
   }
   local parsers = {}
   for _, parser in ipairs(extra_parsers) do
@@ -72,7 +73,7 @@ local M = {
         dependencies = {
                 'nvim-treesitter/playground',
         },
-        event = "BufRead",
+        event = "BufEnter",
 }
 
 return M
