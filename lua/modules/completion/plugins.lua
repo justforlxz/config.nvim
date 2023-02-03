@@ -13,6 +13,7 @@ completion["neovim/nvim-lspconfig"] = {
 		{ "ray-x/lsp_signature.nvim" },
 		{ "jose-elias-alvarez/null-ls.nvim" },
 		{ "jayp0521/mason-null-ls.nvim" },
+        { "b0o/schemastore.nvim" },
 	},
 }
 completion["hrsh7th/nvim-cmp"] = {

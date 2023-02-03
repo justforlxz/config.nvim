@@ -3,6 +3,7 @@ local formatting = require("modules.completion.formatting")
 local nvim_lsp = require("lspconfig")
 local mason = require("mason")
 local mason_lsp = require("mason-lspconfig")
+local util = require("lspconfig.util")
 
 require("lspconfig.ui.windows").default_options.border = "single"
 
@@ -32,30 +33,75 @@ mason.setup({
 	},
 })
 
-mason_lsp.setup({
-	ensure_installed = {
-		"codelldb",
-		"stylua",
-		"shfmt",
-		"shellcheck",
-		"black",
-		"isort",
-		"prettierd",
-		"debugpy",
-  "clangd",
-		"clang-format",
-  "cmake-language-server",
-  --"cspell",
-  "eslint_d",
-  "flake8",
-  --"codespell",
-  "shellharden",
-  "ltex-ls",
+local servers = {
+	clangd = {
+		root_dir = util.root_pattern(
+			".clangd",
+			".clang-tidy",
+			".clang-format",
+			"compile_commands.json",
+			"compile_flags.txt",
+			"configure.ac",
+			".git",
+			"build"
+		),
 	},
-})
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+	gopls = {},
+	html = {},
+	jsonls = {
+		settings = {
+			json = {
+				schemas = require("schemastore").json.schemas(),
+			},
+		},
+	},
+	pyright = {
+		analysis = {
+			typeCheckingMode = "off",
+		},
+	},
+	-- pylsp = {}, -- Integration with rope for refactoring - https://github.com/python-rope/pylsp-rope
+	rust_analyzer = {
+		settings = {
+			["rust-analyzer"] = {
+				cargo = { allFeatures = true },
+				checkOnSave = {
+					command = "clippy",
+					extraArgs = { "--no-deps" },
+				},
+			},
+		},
+	},
+	sumneko_lua = {},
+	tsserver = {
+		disable_formatting = true,
+		init_options = {
+			preferences = {
+				importModuleSpecifierPreference = "project-relative",
+			},
+		},
+		on_attach = function(client)
+			client.server_capabilities.documentFormattingProvider = false
+			client.server_capabilities.documentRangeFormattingProvider = false
+		end,
+	},
+	vimls = {},
+	tailwindcss = {},
+	yamlls = {
+		schemastore = {
+			enable = true,
+		},
+		settings = {
+			yaml = {
+				hover = true,
+				completion = true,
+				validate = true,
+				schemas = require("schemastore").json.schemas(),
+			},
+		},
+	},
+	bashls = {},
+}
 
 local function custom_attach(client, bufnr)
 	require("lsp_signature").on_attach({
@@ -96,9 +142,94 @@ local function switch_source_header_splitcmd(bufnr, splitcmd)
 end
 
 -- Override server settings here
+local options = {
+	on_attach = custom_attach,
+	capabilities = capabilities,
+	flags = {
+		debounce_text_changes = 150,
+	},
+}
 
-for _, server in ipairs(mason_lsp.get_installed_servers()) do
-	if server == "gopls" then
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"codelldb",
+		"stylua",
+		"shfmt",
+		"shellcheck",
+		"black",
+		"isort",
+		"prettierd",
+		"debugpy",
+		"clangd",
+		"clang-format",
+		"cmake-language-server",
+		--"cspell",
+		"eslint_d",
+		"flake8",
+		--"codespell",
+		"shellharden",
+		"ltex-ls",
+	},
+	auto_update = true,
+	run_on_start = true,
+})
+
+mason_lsp.setup({
+	ensure_installed = vim.tbl_keys(servers),
+	automatic_installation = true,
+})
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+mason_lsp.setup_handlers({
+	function(server_name)
+		local opts = vim.tbl_deep_extend("force", options, servers[server_name] or {})
+		nvim_lsp[server_name].setup({ opts })
+	end,
+	["sumneko_lua"] = function()
+		local opts = vim.tbl_deep_extend("force", options, servers["sumneko_lua"] or {})
+		require("neodev").setup({ opts })
+		-- then setup your lsp server as usual
+		nvim_lsp.sumneko_lua.setup({
+			capabilities = capabilities,
+			on_attach = custom_attach,
+			settings = {
+				Lua = {
+					runtime = {
+						-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+						version = "LuaJIT",
+						-- Setup your lua path
+						path = vim.split(package.path, ";"),
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+					diagnostics = { globals = { "vim", "describe", "it", "before_each", "after_each" } },
+					workspace = {
+						library = {
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+						},
+						maxPreload = 100000,
+						preloadFileSize = 10000,
+						checkThirdParty = false, --  https://github.com/neovim/nvim-lspconfig/issues/1700#issuecomment-1033127328
+					},
+					completion = { callSnippet = "Both" },
+					telemetry = { enable = false },
+				},
+			},
+		})
+	end,
+	["tsserver"] = function()
+		local opts = vim.tbl_deep_extend("force", options, servers["tsserver"] or {})
+		require("typescript").setup({
+			disable_commands = false,
+			debug = false,
+			server = opts,
+		})
+	end,
+	["gopls"] = function()
 		nvim_lsp.gopls.setup({
 			on_attach = custom_attach,
 			flags = { debounce_text_changes = 500 },
@@ -116,28 +247,8 @@ for _, server in ipairs(mason_lsp.get_installed_servers()) do
 				},
 			},
 		})
-	elseif server == "sumneko_lua" then
-		nvim_lsp.sumneko_lua.setup({
-			capabilities = capabilities,
-			on_attach = custom_attach,
-			settings = {
-				Lua = {
-					diagnostics = { globals = { "vim" } },
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-						},
-						maxPreload = 100000,
-						preloadFileSize = 10000,
-					},
-					telemetry = { enable = false },
-					-- Do not override treesitter lua highlighting with sumneko lua highlighting
-					semantic = { enable = false },
-				},
-			},
-		})
-	elseif server == "clangd" then
+	end,
+	["clangd"] = function()
 		nvim_lsp.clangd.setup({
 			capabilities = vim.tbl_deep_extend("keep", { offsetEncoding = { "utf-16", "utf-8" } }, capabilities),
 			single_file_support = true,
@@ -175,7 +286,8 @@ for _, server in ipairs(mason_lsp.get_installed_servers()) do
 				},
 			},
 		})
-	elseif server == "jsonls" then
+	end,
+	["jsonls"] = function()
 		nvim_lsp.jsonls.setup({
 			flags = { debounce_text_changes = 500 },
 			capabilities = capabilities,
@@ -232,40 +344,26 @@ for _, server in ipairs(mason_lsp.get_installed_servers()) do
 				},
 			},
 		})
-	elseif server == "tsserver" then
-		local opts = vim.tbl_deep_extend("force", options, servers["tsserver"] or {})
-		require("typescript").setup({
-			disable_commands = false,
-			debug = false,
-			server = opts,
+	end,
+	["html"] = function()
+		-- https://github.com/vscode-langservers/vscode-html-languageserver-bin
+		nvim_lsp.html.setup({
+			cmd = { "html-languageserver", "--stdio" },
+			filetypes = { "html" },
+			init_options = {
+				configurationSection = { "html", "css", "javascript" },
+				embeddedLanguages = { css = true, javascript = true },
+			},
+			settings = {},
+			single_file_support = true,
+			flags = { debounce_text_changes = 500 },
+			capabilities = capabilities,
+			on_attach = custom_attach,
 		})
-	end
-end
-
--- https://github.com/vscode-langservers/vscode-html-languageserver-bin
-
-nvim_lsp.html.setup({
-	cmd = { "html-languageserver", "--stdio" },
-	filetypes = { "html" },
-	init_options = {
-		configurationSection = { "html", "css", "javascript" },
-		embeddedLanguages = { css = true, javascript = true },
-	},
-	settings = {},
-	single_file_support = true,
-	flags = { debounce_text_changes = 500 },
-	capabilities = capabilities,
-	on_attach = custom_attach,
+	end,
 })
 
--- Add your own config for formatter and linter here
-require("modules.completion.null-ls").setup({
-	on_attach = custom_attach,
-	capabilities = capabilities,
-	flags = {
-	  debounce_text_changes = 150,
-	},
-})
+require("modules.completion.null-ls").setup(options)
 require("modules.completion.inlay-hints").setup()
 
--- Override default config here
+formatting.configure_format_on_save()

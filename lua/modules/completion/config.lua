@@ -353,21 +353,26 @@ function config.mason_install()
 
 		-- a list of all tools you want to ensure are installed upon
 		-- start; they should be the names Mason uses for each tool
-		ensure_installed = {
-			-- you can turn off/on auto_update per tool
-			-- "editorconfig-checker",
-
-			"stylua",
-
-			"black",
-
-			"prettier",
-
-			"shellcheck",
-			"shfmt",
-
-			-- "vint",
-		},
+        ensure_installed = {
+            "codelldb",
+            "stylua",
+            "shfmt",
+            "shellcheck",
+            "black",
+            "isort",
+            "prettierd",
+            "debugpy",
+            "clangd",
+            "clang-format",
+            "cmake-language-server",
+            --"cspell",
+            "eslint_d",
+            "flake8",
+            --"codespell",
+            "shellharden",
+            "ltex-ls",
+        },
+        automatic_installation = true,
 
 		-- if set to true this will check each tool for updates. If updates
 		-- are available the tool will be updated.

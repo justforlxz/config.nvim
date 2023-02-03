@@ -31,5 +31,11 @@ lang["jose-elias-alvarez/typescript.nvim"] = {
         "jsx",
     }
 }
+lang["folke/neodev.nvim"] = {
+    lazy = true,
+    ft = {
+        "lua"
+    }
+}
 
 return lang

@@ -5,7 +5,7 @@ local home = require("core.global").home
 settings["use_ssh"] = true
 
 -- Set it to false if there are no need to format on save.
-settings["format_on_save"] = true
+settings["format_on_save"] = false
 
 -- Set the format disabled directories here, files under these dirs won't be formatted on save.
 settings["format_disabled_dirs"] = {

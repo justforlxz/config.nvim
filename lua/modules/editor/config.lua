@@ -38,6 +38,7 @@ function config.nvim_treesitter()
 		"vala",
 		"vim",
 		"toml",
+        "markdown",
 		},
 		highlight = {
 			enable = true,
