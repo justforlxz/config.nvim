@@ -141,6 +141,9 @@ local function switch_source_header_splitcmd(bufnr, splitcmd)
 	end
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
 -- Override server settings here
 local options = {
 	on_attach = custom_attach,
@@ -179,9 +182,6 @@ mason_lsp.setup({
 	automatic_installation = true,
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
 mason_lsp.setup_handlers({
 	function(server_name)
 		local opts = vim.tbl_deep_extend("force", options, servers[server_name] or {})
@@ -200,7 +200,7 @@ mason_lsp.setup_handlers({
 						-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 						version = "LuaJIT",
 						-- Setup your lua path
-						path = vim.split(package.path, ";"),
+						path = vim.split(package.path, ";", {}),
 					},
 					completion = {
 						callSnippet = "Replace",
@@ -215,7 +215,6 @@ mason_lsp.setup_handlers({
 						preloadFileSize = 10000,
 						checkThirdParty = false, --  https://github.com/neovim/nvim-lspconfig/issues/1700#issuecomment-1033127328
 					},
-					completion = { callSnippet = "Both" },
 					telemetry = { enable = false },
 				},
 			},
@@ -362,6 +361,29 @@ mason_lsp.setup_handlers({
 		})
 	end,
 })
+
+-- TODO not working on react
+-- https://github.com/neovim/neovim/issues/20457#issuecomment-1266782345
+-- notify always show No information available
+-- vim.lsp.handlers["textDocument/hover"] = function(_, result, ctx, config)
+-- 	local function notify_filter()
+-- 		local banned_messages = { "No information available" }
+-- 		vim.notify = function(msg, ...)
+-- 			for _, banned in ipairs(banned_messages) do
+-- 				if msg == banned then
+-- 					return
+-- 				end
+-- 			end
+-- 			require("notify")(msg, ...)
+-- 		end
+-- 	end
+--
+-- 	config = config or {}
+-- 	config.focus_id = ctx.method
+-- 	if not (result and result.contents) then
+-- 		return
+-- 	end
+-- end
 
 require("modules.completion.null-ls").setup(options)
 require("modules.completion.inlay-hints").setup()

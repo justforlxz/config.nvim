@@ -113,18 +113,6 @@ local clipboard_config = function()
     end
 end
 
-local function notify_filter()
-    local banned_messages = { "No information available" }
-    vim.notify = function(msg, ...)
-        for _, banned in ipairs(banned_messages) do
-            if msg == banned then
-                return
-            end
-        end
-        require("notify")(msg, ...)
-    end
-end
-
 local load_core = function()
     createdir()
     disable_distribution_plugins()
