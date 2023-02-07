@@ -1,4 +1,5 @@
 local global = require("core.global")
+local util = require("lspconfig.util")
 local function switch_source_header_splitcmd(bufnr, splitcmd)
 	bufnr = require("lspconfig").util.validate_bufnr(bufnr)
 	local clangd_client = require("lspconfig").util.get_active_client_by_name(bufnr, "clangd")
@@ -82,4 +83,14 @@ return {
 			description = "Open source/header in a new split",
 		},
 	},
+    root_dir = util.root_pattern(
+        ".clangd",
+        ".clang-tidy",
+        ".clang-format",
+        "compile_commands.json",
+        "compile_flags.txt",
+        "configure.ac",
+        ".git",
+        "build"
+    ),
 }
