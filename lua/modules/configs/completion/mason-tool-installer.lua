@@ -3,19 +3,21 @@ return function()
 		-- a list of all tools you want to ensure are installed upon
 		-- start; they should be the names Mason uses for each tool
 		ensure_installed = {
-			-- you can turn off/on auto_update per tool
-			-- "editorconfig-checker",
-
+			"codelldb",
 			"stylua",
-
-			"black",
-
-			"prettier",
-
-			"shellcheck",
 			"shfmt",
-
-			-- "vint",
+			"shellcheck",
+			"black",
+			"isort",
+			"prettierd",
+			"debugpy",
+			"clangd",
+			"clang-format",
+			"cmake-language-server",
+			"eslint_d",
+			"flake8",
+			"shellharden",
+			"ltex-ls",
 		},
 
 		-- if set to true this will check each tool for updates. If updates

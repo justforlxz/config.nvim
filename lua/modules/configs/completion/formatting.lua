@@ -8,6 +8,39 @@ vim.api.nvim_create_user_command("FormatToggle", function()
 	M.toggle_format_on_save()
 end, {})
 
+vim.api.nvim_create_user_command("LspFormat", function(opts)
+	if opts.args == "file" then
+		require("completion.formatting").format({ filter = M.format_filter })
+	elseif opts.args == "range" then
+		local start_row, start_column = unpack(vim.api.nvim_buf_get_mark(0, "<"))
+		local end_row, end_column = unpack(vim.api.nvim_buf_get_mark(0, ">"))
+		vim.lsp.buf.format({
+			async = true,
+			filter = function(client)
+				return client.name ~= "efm"
+			end,
+			range = {
+				["start"] = { start_row, start_column },
+				["end"] = { end_row, end_column },
+			},
+		})
+	else
+		vim.notify(
+			string.format("[LSP]wrong arg", opts.args),
+			vim.log.levels.WARN,
+			{ title = "LSP Formatter Warning!" }
+		)
+	end
+end, {
+	nargs = 1,
+	complete = function()
+		return {
+			"file",
+			"range",
+		}
+	end,
+})
+
 local block_list = {}
 vim.api.nvim_create_user_command("FormatterToggle", function(opts)
 	if block_list[opts.args] == nil then
