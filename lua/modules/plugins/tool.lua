@@ -107,4 +107,9 @@ tool["mfussenegger/nvim-dap"] = {
 	},
 }
 
+tool["nathom/filetype.nvim"] = {
+    lazy = false,
+    config = require("tool.filetype"),
+}
+
 return tool

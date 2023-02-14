@@ -67,8 +67,12 @@ editor["romainl/vim-cool"] = {
 ----------------------------------------------------------------------
 editor["nvim-treesitter/nvim-treesitter"] = {
 	lazy = true,
-	build = ":TSUpdate",
-	event = "BufReadPost",
+    build = function()
+		if #vim.api.nvim_list_uis() ~= 0 then
+			vim.cmd("TSUpdate")
+		end
+	end,
+    event = { "CursorHold", "CursorHoldI" },
 	config = require("editor.treesitter"),
 	dependencies = {
 		{ "nvim-treesitter/nvim-treesitter-textobjects" },

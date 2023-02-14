@@ -25,6 +25,8 @@ return function()
 			"typescript",
 			"vue",
 			"css",
+			"cmake",
+			"qmljs",
 		},
 		highlight = {
 			enable = true,
