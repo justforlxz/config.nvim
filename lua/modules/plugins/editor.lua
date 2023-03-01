@@ -10,9 +10,14 @@ editor["rmagatti/auto-session"] = {
 	cmd = { "SaveSession", "RestoreSession", "DeleteSession" },
 	config = require("editor.auto-session"),
 }
+editor["m4xshen/autoclose.nvim"] = {
+	lazy = true,
+	event = "InsertEnter",
+	config = require("editor.autoclose"),
+}
 editor["max397574/better-escape.nvim"] = {
 	lazy = true,
-	event = "BufReadPost",
+	event = { "CursorHold", "CursorHoldI" },
 	config = require("editor.better-escape"),
 }
 editor["LunarVim/bigfile.nvim"] = {
@@ -26,13 +31,13 @@ editor["ojroques/nvim-bufdel"] = {
 }
 editor["rhysd/clever-f.vim"] = {
 	lazy = true,
-	event = "BufReadPost",
+	event = { "BufReadPost", "BufAdd", "BufNewFile" },
 	config = require("editor.cleverf"),
 }
-editor["terrortylor/nvim-comment"] = {
+editor["numToStr/Comment.nvim"] = {
 	lazy = true,
-	event = { "BufNewFile", "BufReadPre" },
-	config = require("editor.nvim-comment"),
+	event = { "CursorHold", "CursorHoldI" },
+	config = require("editor.comment"),
 }
 editor["sindrets/diffview.nvim"] = {
 	lazy = true,
@@ -50,7 +55,7 @@ editor["phaazon/hop.nvim"] = {
 }
 editor["RRethy/vim-illuminate"] = {
 	lazy = true,
-	event = "BufReadPost",
+	event = { "CursorHold", "CursorHoldI" },
 	config = require("editor.vim-illuminate"),
 }
 editor["luukvbaal/stabilize.nvim"] = {
@@ -67,18 +72,18 @@ editor["romainl/vim-cool"] = {
 ----------------------------------------------------------------------
 editor["nvim-treesitter/nvim-treesitter"] = {
 	lazy = true,
-    build = function()
+	build = function()
 		if #vim.api.nvim_list_uis() ~= 0 then
-			vim.cmd("TSUpdate")
+			vim.api.nvim_command("TSUpdate")
 		end
 	end,
-    event = { "CursorHold", "CursorHoldI" },
+	event = { "CursorHold", "CursorHoldI" },
 	config = require("editor.treesitter"),
 	dependencies = {
 		{ "nvim-treesitter/nvim-treesitter-textobjects" },
-		{ "p00f/nvim-ts-rainbow" },
+		{ "mrjones2014/nvim-ts-rainbow" },
 		{ "JoosepAlviste/nvim-ts-context-commentstring" },
-		{ "mfussenegger/nvim-ts-hint-textobject" },
+		{ "mfussenegger/nvim-treehopper" },
 		{ "andymass/vim-matchup" },
 		{
 			"windwp/nvim-ts-autotag",

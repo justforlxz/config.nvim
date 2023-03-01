@@ -5,7 +5,7 @@ local home = require("core.global").home
 settings["use_ssh"] = true
 
 -- Set it to false if there are no need to format on save.
-settings["format_on_save"] = false
+settings["format_on_save"] = true
 
 -- Set the format disabled directories here, files under these dirs won't be formatted on save.
 settings["format_disabled_dirs"] = {
@@ -31,5 +31,40 @@ settings["colorscheme"] = "catppuccin"
 -- Useful for when you want to use a colorscheme that has a light and dark variant like `edge`.
 -- Available values are: `dark`, `light`.
 settings["background"] = "dark"
+
+-- Set the desired LSPs here.
+-- check the below link for all the supported LSPs:
+-- https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/server_configurations
+settings["lsp"] = {
+	"bashls",
+	"clangd",
+	"html",
+	"jsonls",
+	"lua_ls",
+	"pyright",
+	-- Uncomment the below line to make sure `gopls` installed by `mason`.
+	-- "gopls",
+}
+
+-- Set the desired non-LSP sources here.
+-- check the below link for all supported non-LSP sources
+-- in `code_actions`, `completion`, `diagnostics`, `formatting`, `hover` folders:
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins
+settings["null_ls"] = {
+	-- formatting
+	"black",
+	"clang_format",
+	"eslint_d",
+	"jq",
+	"markdownlint",
+	"prettierd",
+	"rustfmt",
+	"shfmt",
+	"stylua",
+
+	-- diagnostics
+	"shellcheck",
+	-- "markdownlint",
+}
 
 return settings

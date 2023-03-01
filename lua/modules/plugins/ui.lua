@@ -26,7 +26,7 @@ ui["j-hui/fidget.nvim"] = {
 }
 ui["lewis6991/gitsigns.nvim"] = {
 	lazy = true,
-	event = { "BufReadPost", "BufNewFile" },
+	event = { "CursorHold", "CursorHoldI" },
 	config = require("ui.gitsigns"),
 }
 ui["lukas-reineke/indent-blankline.nvim"] = {
@@ -57,6 +57,11 @@ ui["rcarriga/nvim-notify"] = {
 	lazy = true,
 	event = "VeryLazy",
 	config = require("ui.notify"),
+}
+ui["folke/paint.nvim"] = {
+	lazy = true,
+	event = { "CursorHold", "CursorHoldI" },
+	config = require("ui.paint"),
 }
 ui["dstein64/nvim-scrollview"] = {
 	lazy = true,
