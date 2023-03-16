@@ -62,6 +62,7 @@ settings["lsp_deps"] = {
 	"lua_ls",
 	"pyright",
 	"gopls",
+    "cmake",
 }
 
 -- Set the general-purpose servers that will be installed during bootstrap here
@@ -74,8 +75,8 @@ settings["null_ls_deps"] = {
 	"editorconfig_checker",
 	"prettier",
 	"rustfmt",
-	"shfmt",
-	"vint",
+    "cmakelang",
+	"beautysh",
 }
 
 return settings
