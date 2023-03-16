@@ -58,9 +58,9 @@ return function()
 		sorting = {
 			priority_weight = 2,
 			comparators = {
-				require("copilot_cmp.comparators").prioritize,
-				require("copilot_cmp.comparators").score,
-				-- require("cmp_tabnine.compare"),
+				-- require("copilot_cmp.comparators").prioritize,
+				-- require("copilot_cmp.comparators").score,
+				require("cmp_tabnine.compare"),
 				compare.offset,
 				compare.exact,
 				compare.lsp_scores,
@@ -129,9 +129,9 @@ return function()
 			{ name = "orgmode" },
 			{ name = "buffer" },
 			{ name = "latex_symbols" },
-			{ name = "copilot" },
+			-- { name = "copilot" },
 			-- { name = "codeium" },
-		    { name = "cmp_tabnine" },
+			{ name = "cmp_tabnine" },
 		},
 	})
 end
