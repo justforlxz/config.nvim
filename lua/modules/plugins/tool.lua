@@ -109,16 +109,16 @@ tool["mfussenegger/nvim-dap"] = {
 }
 
 tool["nathom/filetype.nvim"] = {
-    lazy = false,
-    config = require("tool.filetype"),
+	lazy = false,
+	config = require("tool.filetype"),
 }
 
 tool["JuanZoran/Trans.nvim"] = {
-    lazy = true,
-    cmd = { "Translate", "TransPlay", "TranslateInput" },
-    dependencies = { 'kkharji/sqlite.lua', lazy = true },
-    config = require("tool.trans"),
-    build = "./install.sh",
+	lazy = true,
+	cmd = { "Translate", "TransPlay", "TranslateInput" },
+	dependencies = { "kkharji/sqlite.lua", lazy = true },
+	config = require("tool.trans"),
+	branch = "dev",
 }
 
 return tool
