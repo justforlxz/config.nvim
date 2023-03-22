@@ -114,11 +114,11 @@ tool["nathom/filetype.nvim"] = {
 }
 
 tool["JuanZoran/Trans.nvim"] = {
-	lazy = true,
 	cmd = { "Translate", "TransPlay", "TranslateInput" },
 	dependencies = { "kkharji/sqlite.lua", lazy = true },
 	config = require("tool.trans"),
-	branch = "dev",
+	branch = "experimental",
+    run = function() require('Trans').install() end,
 }
 
 return tool
