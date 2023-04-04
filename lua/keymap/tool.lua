@@ -208,12 +208,10 @@ local plug_map = {
 		:with_noremap()
 		:with_silent()
 		:with_desc("debug: Open REPL"),
+
     -- Plugin: Trans
-    ["n|mm"] = map_cr("Translate"):with_noremap():with_silent():with_desc(" Translate"),
-    ["x|mm"] = map_cr("Translate"):with_noremap():with_silent():with_desc(" Translate"),
-    ["n|mk"] = map_cr("TransPlay"):with_noremap():with_silent():with_desc(" 自动发音"),
-    ["x|mk"] = map_cr("TransPlay"):with_noremap():with_silent():with_desc(" 自动发音"),
-    ["n|mi"] = map_cr("TranslateInput"):with_noremap():with_silent():with_desc(" Translate From Input"),
+    ["n|mm"] = map_cr("TranslateW"):with_noremap():with_silent():with_desc(" Translate"),
+    ["x|mm"] = map_cu("'<,'>TranslateW"):with_noremap():with_silent():with_desc(" Translate"),
 }
 
 bind.nvim_load_mapping(plug_map)

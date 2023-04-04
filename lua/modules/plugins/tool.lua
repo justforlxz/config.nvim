@@ -112,12 +112,15 @@ tool["nathom/filetype.nvim"] = {
 	config = require("tool.filetype"),
 }
 
-tool["JuanZoran/Trans.nvim"] = {
-	cmd = { "Translate", "TransPlay", "TranslateInput" },
-	dependencies = { "kkharji/sqlite.lua", lazy = true },
-	config = require("tool.trans"),
-	branch = "experimental",
-    run = function() require('Trans').install() end,
+tool["voldikss/vim-translator"] = {
+    lazy = true,
+    cmd = {
+        "TranslateW",
+    },
+    config = function()
+        vim.g.translator_default_engines = { 'google' }
+        vim.g.translator_window_type = 'preview'
+    end
 }
 
 return tool
