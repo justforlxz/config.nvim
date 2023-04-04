@@ -95,6 +95,7 @@ return function()
 			auto_preview = false,
 			auto_refresh = true,
 			auto_close = true,
+            close_after_jump = true,
 			keys = {
 				jump = "<CR>",
 				expand_collapse = "u",
