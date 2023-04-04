@@ -34,6 +34,11 @@ editor["rhysd/clever-f.vim"] = {
 	event = { "BufReadPost", "BufAdd", "BufNewFile" },
 	config = require("editor.cleverf"),
 }
+editor["folke/todo-comments.nvim"] = {
+    lazy = true,
+    event = { "CursorHold", "CursorHoldI" },
+    config = require("editor.todo-comment"),
+}
 editor["numToStr/Comment.nvim"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },

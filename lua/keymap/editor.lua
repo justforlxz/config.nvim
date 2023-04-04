@@ -64,6 +64,10 @@ local plug_map = {
 		:with_noremap()
 		:with_desc("edit: Toggle comment for block with selection"),
 
+    -- Plugin: todo-comments
+    ["n|td"] = map_cr("TodoTrouble"):with_silent():with_noremap():with_desc("todo: Show trouble list"),
+    ["n|<leader>ft"] = map_cr("TodoTelescope"):with_silent():with_noremap():with_desc("find: Todos"),
+
 	-- Plugin: diffview
 	["n|<leader>D"] = map_cr("DiffviewOpen"):with_silent():with_noremap():with_desc("git: Show diff"),
 	["n|<leader><leader>D"] = map_cr("DiffviewClose"):with_silent():with_noremap():with_desc("git: Close diff"),
