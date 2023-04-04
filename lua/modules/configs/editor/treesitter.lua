@@ -5,29 +5,7 @@ return vim.schedule_wrap(function()
 	vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
 
 	require("nvim-treesitter.configs").setup({
-		ensure_installed = {
-			"bash",
-			"c",
-			"cpp",
-			"css",
-			"go",
-			"gomod",
-			"help",
-			"html",
-			"javascript",
-			"json",
-			"latex",
-			"lua",
-			"make",
-			"markdown",
-			"markdown_inline",
-			"python",
-			"rust",
-			"typescript",
-			"vue",
-			"yaml",
-            "qmljs",
-		},
+		ensure_installed = require("core.settings").treesitter_deps,
 		highlight = {
 			enable = true,
 			disable = function(ft, bufnr)

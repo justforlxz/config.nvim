@@ -79,4 +79,26 @@ settings["null_ls_deps"] = {
 	"beautysh",
 }
 
+settings["treesitter_deps"] = {
+    "bash",
+    "c",
+    "cpp",
+    "css",
+    "cmake",
+    "html",
+    "javascript",
+    "json",
+    "latex",
+    "lua",
+    "make",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "qmljs",
+    "typescript",
+    "vimdoc",
+    "vue",
+    "yaml",
+}
+
 return settings
