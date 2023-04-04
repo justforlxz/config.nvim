@@ -1,5 +1,5 @@
 return function()
-	local transparent_background = false -- Set background transparency here!
+	local transparent_background = true -- Set background transparency here!
 
 	require("catppuccin").setup({
 		flavour = "mocha", -- Can be one of: latte, frappe, macchiato, mocha
@@ -71,7 +71,7 @@ return function()
 			navic = { enabled = false },
 			neogit = false,
 			neotest = false,
-			neotree = { enabled = false, show_root = true, transparent_panel = false },
+			neotree = { enabled = true, show_root = true, transparent_panel = false },
 			noice = false,
 			notify = true,
 			nvimtree = true,
@@ -148,7 +148,7 @@ return function()
 					FidgetTitle = { fg = cp.blue, style = { "bold" } },
 
 					-- For trouble.nvim
-					TroubleNormal = { bg = cp.base },
+					TroubleNormal = { bg = cp.none },
 
 					-- For treesitter.
 					["@field"] = { fg = cp.rosewater },
