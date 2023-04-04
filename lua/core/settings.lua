@@ -63,7 +63,7 @@ settings["lsp_deps"] = {
 	"pyright",
 	"gopls",
     "cmake",
-    "rust-analyzer"
+    "rust_analyzer"
 }
 
 -- Set the general-purpose servers that will be installed during bootstrap here
