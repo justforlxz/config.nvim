@@ -105,18 +105,21 @@ local function load_options()
         return s == nil or s == ""
     end
 
-	-- custom python provider
-	local conda_prefix = os.getenv("CONDA_PREFIX")
-	if not isempty(conda_prefix) then
-		vim.g.python_host_prog = conda_prefix .. "/bin/python"
-		vim.g.python3_host_prog = conda_prefix .. "/bin/python"
-	elseif global.is_mac then
-		vim.g.python_host_prog = "/usr/bin/python"
-		vim.g.python3_host_prog = "/usr/local/bin/python3"
-	else
-		vim.g.python_host_prog = "/usr/bin/python"
-		vim.g.python3_host_prog = "/usr/bin/python3"
-	end
+    -- custom python provider
+    local conda_prefix = os.getenv("CONDA_PREFIX")
+    if not isempty(conda_prefix) then
+        vim.g.python_host_prog = conda_prefix .. "/bin/python"
+        vim.g.python3_host_prog = conda_prefix .. "/bin/python"
+    elseif global.is_mac then
+        vim.g.python_host_prog = "/usr/bin/python"
+        vim.g.python3_host_prog = "/usr/local/bin/python3"
+    elseif global.is_windows then
+        vim.g.python_host_prog = "python.exe"
+        vim.g.python3_host_prog = "python.exe"
+    else
+        vim.g.python_host_prog = "python"
+        vim.g.python3_host_prog = "python3"
+    end
 
 	for name, value in pairs(global_local) do
 		vim.o[name] = value
