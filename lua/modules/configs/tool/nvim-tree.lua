@@ -87,8 +87,8 @@ return function()
 					folder = {
 						-- arrow_open = "",
 						-- arrow_closed = "",
-						arrow_open = "",
-						arrow_closed = "",
+                        arrow_open = icons.ui.ArrowOpen,
+                        arrow_closed = icons.ui.ArrowClosed,
 						default = icons.ui.Folder,
 						open = icons.ui.FolderOpen,
 						empty = icons.ui.EmptyFolder,
