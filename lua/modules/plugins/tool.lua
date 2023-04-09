@@ -102,11 +102,6 @@ tool["mfussenegger/nvim-dap"] = {
 	},
 }
 
-tool["nathom/filetype.nvim"] = {
-	lazy = false,
-	config = require("tool.filetype"),
-}
-
 tool["voldikss/vim-translator"] = {
     lazy = true,
     cmd = {
