@@ -16,7 +16,7 @@ completion["neovim/nvim-lspconfig"] = {
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
+	event = { "LspAttach" },
 	config = require("completion.null-ls"),
 	dependencies = {
 		"nvim-lua/plenary.nvim",
