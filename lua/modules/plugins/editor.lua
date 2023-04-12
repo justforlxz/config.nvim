@@ -105,12 +105,4 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 	},
 }
 
-editor["anuvyklack/windows.nvim"] = {
-   dependencies = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim"
-   },
-   config = require("editor.windows"),
-}
-
 return editor
