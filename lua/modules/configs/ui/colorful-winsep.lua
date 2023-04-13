@@ -6,7 +6,7 @@ return function()
                 local win_id = vim.fn.win_getid(vim.fn.winnr('h'))
                 local filetype = vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(win_id), 'filetype')
                 if filetype == "NvimTree" then
-                    colorful_winsep.NvimSeparatorDel()
+                    require("colorful-winsep").NvimSeparatorDel()
                 end
             end
         end
