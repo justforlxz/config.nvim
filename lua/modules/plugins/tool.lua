@@ -113,4 +113,12 @@ tool["voldikss/vim-translator"] = {
     end
 }
 
+tool["mrjones2014/legendary.nvim"] = {
+    lazy = true,
+    config = require("tool.legendary"),
+    dependencies = {
+        "stevearc/dressing.nvim",
+    },
+}
+
 return tool
