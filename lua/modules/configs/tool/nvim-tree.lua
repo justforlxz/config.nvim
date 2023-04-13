@@ -13,7 +13,6 @@ return function()
 		hijack_cursor = true,
 		hijack_netrw = true,
 		hijack_unnamed_buffer_when_opening = true,
-		ignore_buffer_on_setup = false,
 		respect_buf_cwd = false,
 		sort_by = "name",
 		sync_root_with_cwd = true,
@@ -26,7 +25,6 @@ return function()
 			number = false,
 			relativenumber = false,
 			signcolumn = "yes",
-			hide_root_folder = true,
 			float = {
 				enable = false,
 				open_win_config = {
@@ -105,7 +103,6 @@ return function()
 			update_root = true,
 			ignore_list = {},
 		},
-		ignore_ft_on_setup = {},
 		filters = {
 			dotfiles = false,
 			custom = { ".DS_Store" },
