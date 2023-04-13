@@ -74,4 +74,13 @@ ui["edluffy/specs.nvim"] = {
 	config = require("ui.specs"),
 }
 
+ui["mrjones2014/smart-splits.nvim"] = {
+    lazy = true,
+    build = './kitty/install-kittens.bash',
+    config = require("editor.splits"),
+    dependencies = {
+        'mrjones2014/legendary.nvim',
+    },
+}
+
 return ui
