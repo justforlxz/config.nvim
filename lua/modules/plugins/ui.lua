@@ -83,4 +83,10 @@ ui["mrjones2014/smart-splits.nvim"] = {
     },
 }
 
+ui["nvim-zh/colorful-winsep.nvim"] = {
+	lazy = true,
+	event = { "WinNew" },
+	config = require("ui.colorful-winsep"),
+}
+
 return ui
