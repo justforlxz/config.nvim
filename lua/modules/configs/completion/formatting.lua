@@ -51,31 +51,33 @@ function M.enable_format_on_save(is_configured)
 	end
 end
 
-function M.disable_format_on_save()
-	pcall(vim.api.nvim_del_augroup_by_name, "format_on_save")
-	if format_on_save then
-		vim.notify("Disabled format-on-save", vim.log.levels.INFO, { title = "Settings modification success!" })
-	end
+function M.disable_format_on_save(is_configured)
+    pcall(vim.api.nvim_del_augroup_by_name, "format_on_save")
+    if not is_configured then
+        vim.notify("Successfully disabled format-on-save",
+        vim.log.levels.INFO,
+        { title = "Settings modification success!" })
+    end
 end
 
 function M.configure_format_on_save()
-	if format_on_save then
-		M.enable_format_on_save(true)
-	else
-		M.disable_format_on_save()
-	end
+    if format_on_save then
+        M.enable_format_on_save(true)
+    else
+        M.disable_format_on_save(true)
+    end
 end
 
 function M.toggle_format_on_save()
-	local status = pcall(vim.api.nvim_get_autocmds, {
-		group = "format_on_save",
-		event = "BufWritePre",
-	})
-	if not status then
-		M.enable_format_on_save(false)
-	else
-		M.disable_format_on_save()
-	end
+    local status = pcall(vim.api.nvim_get_autocmds, {
+        group = "format_on_save",
+        event = "BufWritePre",
+    })
+    if not status then
+        M.enable_format_on_save(false)
+    else
+        M.disable_format_on_save(false)
+    end
 end
 
 function M.format_filter(clients)
