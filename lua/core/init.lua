@@ -130,6 +130,8 @@ local load_core = function()
 	local background = require("core.settings").background
 	vim.api.nvim_command("set background=" .. background)
 	vim.api.nvim_command("colorscheme " .. colorscheme)
+    -- for qml lsp
+    vim.api.nvim_command('au BufNewFile,BufRead *.qml setfiletype qmljs')
 end
 
 load_core()
