@@ -61,10 +61,4 @@ completion["zbirenbaum/copilot.lua"] = {
     },
 }
 
-completion["windwp/nvim-ts-autotag"] = {
-    lazy = true,
-	event = "LspAttach",
-    config = function() require('nvim-ts-autotag').setup {} end
-}
-
 return completion
