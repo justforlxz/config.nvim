@@ -33,6 +33,7 @@ function mapping.lsp(buf)
         ["n|gh"] = map_cr("Lspsaga lsp_finder"):with_buffer(buf):with_desc("lsp: Show reference"),
         ["n|<leader>ci"] = map_cr("Lspsaga incoming_calls"):with_buffer(buf):with_desc("lsp: Show incoming calls"),
         ["n|<leader>co"] = map_cr("Lspsaga outgoing_calls"):with_buffer(buf):with_desc("lsp: Show outgoing calls"),
+        ["n|<leader>lf"] = map_cr("lua vim.lsp.buf.format({async = true})"):with_noremap():with_silent():with_nowait():with_desc("File: format current file"),
     }
 
     bind.nvim_load_mapping(map)
