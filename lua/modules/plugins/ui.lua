@@ -8,6 +8,9 @@ ui["goolord/alpha-nvim"] = {
 ui["akinsho/bufferline.nvim"] = {
 	lazy = true,
 	event = { "BufReadPost", "BufAdd", "BufNewFile" },
+	dependencies = {
+		{ "nvim-tree/nvim-web-devicons" },
+	},
 	config = require("ui.bufferline"),
 }
 ui["catppuccin/nvim"] = {
