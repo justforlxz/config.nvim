@@ -1,25 +1,6 @@
 local settings = {}
 local home = require("core.global").home
 
--- Set it to false if you want to use https to update plugins and treesitter parsers.
----@type boolean
-settings["use_ssh"] = true
-
--- Set it to false if there are no need to format on save.
----@type boolean
-settings["format_on_save"] = false
-
--- Set the format disabled directories here, files under these dirs won't be formatted on save.
----@type string[]
-settings["format_disabled_dirs"] = {
-	home .. "/format_disabled_dir_under_home",
-}
-
--- NOTE: The startup time will be slowed down when it's true.
--- Set it to false if you don't use nvim to open big files.
----@type boolean
-settings["load_big_files_faster"] = false
-
 -- Change the colors of the global palette here.
 -- Settings will complete their replacement at initialization.
 -- Parameters will be automatically completed as you type.
@@ -38,6 +19,10 @@ settings["colorscheme"] = "catppuccin"
 ---@type "dark"|"light"
 settings["background"] = "dark"
 
+settings["treesitter"] = {"bash", "c", "cpp", "css", "go", "gomod", "html", "javascript", "json", "latex", "lua",
+                           "make", "markdown", "markdown_inline", "python", "rust", "typescript", "vimdoc", "vue",
+                           "yaml"}
+
 -- Filetypes in this list will skip lsp formatting if rhs is true
 ---@type table<string, boolean>
 settings["formatter_block_list"] = {
@@ -47,7 +32,10 @@ settings["formatter_block_list"] = {
 -- Servers in this list will skip setting formatting capabilities if rhs is true
 ---@type table<string, boolean>
 settings["server_formatting_block_list"] = {
+	lua_ls = true,
 	tsserver = true,
+	clangd = true,
+	pylsp = true,
 }
 
 -- Set the language servers that will be installed during bootstrap here
@@ -60,12 +48,8 @@ settings["lsp_deps"] = {
 	"html",
 	"jsonls",
 	"lua_ls",
-	"pyright",
-	"gopls",
-    "cmake",
-    "rust_analyzer",
-    "eslint",
-    "tsserver",
+	"pylsp",
+	-- "gopls",
 }
 
 -- Set the general-purpose servers that will be installed during bootstrap here
@@ -75,39 +59,12 @@ settings["lsp_deps"] = {
 ---@type string[]
 settings["null_ls_deps"] = {
 	"black",
-	"editorconfig_checker",
+	"clang_format",
 	"prettier",
 	"rustfmt",
-    "cmakelang",
-	"beautysh",
-}
-
-settings["treesitter_deps"] = {
-    "bash",
-    "c",
-    "cpp",
-    "css",
-    "cmake",
-    "glsl",
-    "go",
-    "gomod",
-    "gosum",
-    "gowork",
-    "html",
-    "hlsl",
-    "javascript",
-    "json",
-    "latex",
-    "lua",
-    "make",
-    "markdown",
-    "markdown_inline",
-    "python",
-    "qmljs",
-    "typescript",
-    "vimdoc",
-    "vue",
-    "yaml",
+	"shfmt",
+	"stylua",
+	"vint",
 }
 
 return settings

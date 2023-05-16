@@ -15,9 +15,9 @@ local plug_map = {
 	end):with_expr(),
 
 	-- Plugin: auto_session
-	["n|<leader>ss"] = map_cu("SaveSession"):with_noremap():with_silent():with_desc("session: Save"),
-	["n|<leader>sr"] = map_cu("RestoreSession"):with_noremap():with_silent():with_desc("session: Restore"),
-	["n|<leader>sd"] = map_cu("DeleteSession"):with_noremap():with_silent():with_desc("session: Delete"),
+	["n|<leader>ss"] = map_cu("SessionSave"):with_noremap():with_silent():with_desc("session: Save"),
+	["n|<leader>sr"] = map_cu("SessionRestore"):with_noremap():with_silent():with_desc("session: Restore"),
+	["n|<leader>sd"] = map_cu("SessionDelete"):with_noremap():with_silent():with_desc("session: Delete"),
 
 	-- Plugin: nvim-bufdel
 	["n|<A-q>"] = map_cr("BufDel"):with_noremap():with_silent():with_desc("buffer: Close current"),
@@ -64,32 +64,19 @@ local plug_map = {
 		:with_noremap()
 		:with_desc("edit: Toggle comment for block with selection"),
 
-    -- Plugin: todo-comments
-    ["n|td"] = map_cr("TodoTrouble"):with_silent():with_noremap():with_desc("todo: Show trouble list"),
-    ["n|<leader>ft"] = map_cr("TodoTelescope"):with_silent():with_noremap():with_desc("find: Todos"),
-
 	-- Plugin: diffview
 	["n|<leader>D"] = map_cr("DiffviewOpen"):with_silent():with_noremap():with_desc("git: Show diff"),
 	["n|<leader><leader>D"] = map_cr("DiffviewClose"):with_silent():with_noremap():with_desc("git: Close diff"),
 
 	-- Plugin: vim-easy-align
-	["n|gea"] = map_callback(function()
-			return et("<Plug>(EasyAlign)")
-		end)
-		:with_expr()
-		:with_desc("edit: Align with delimiter"),
-	["x|gea"] = map_callback(function()
-			return et("<Plug>(EasyAlign)")
-		end)
-		:with_expr()
-		:with_desc("edit: Align with delimiter"),
+	["nx|gea"] = map_cr("EasyAlign"):with_desc("edit: Align with delimiter"),
 
 	-- Plugin: hop
-	["n|<leader>w"] = map_cu("HopWord"):with_noremap():with_desc("jump: Goto word"),
-	["n|<leader>j"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
-	["n|<leader>k"] = map_cu("HopLine"):with_noremap():with_desc("jump: Goto line"),
-	["n|<leader>c"] = map_cu("HopChar1"):with_noremap():with_desc("jump: Goto one char"),
-	["n|<leader>cc"] = map_cu("HopChar2"):with_noremap():with_desc("jump: Goto two chars"),
+	["nv|<leader>w"] = map_cmd("<Cmd>HopWord<CR>"):with_noremap():with_desc("jump: Goto word"),
+	["nv|<leader>j"] = map_cmd("<Cmd>HopLine<CR>"):with_noremap():with_desc("jump: Goto line"),
+	["nv|<leader>k"] = map_cmd("<Cmd>HopLine<CR>"):with_noremap():with_desc("jump: Goto line"),
+	["nv|<leader>c"] = map_cmd("<Cmd>HopChar1<CR>"):with_noremap():with_desc("jump: Goto one char"),
+	["nv|<leader>cc"] = map_cmd("<Cmd>HopChar2<CR>"):with_noremap():with_desc("jump: Goto two chars"),
 
 	-- Plugin: treehopper
 	["o|m"] = map_cu("lua require('tsht').nodes()"):with_silent():with_desc("jump: Operate across syntax tree"),
@@ -97,6 +84,9 @@ local plug_map = {
 	-- Plugin: tabout
 	["i|<A-l>"] = map_cmd("<Plug>(TaboutMulti)"):with_silent():with_noremap():with_desc("edit: Goto end of pair"),
 	["i|<A-h>"] = map_cmd("<Plug>(TaboutBackMulti)"):with_silent():with_noremap():with_desc("edit: Goto begin of pair"),
+
+	-- Plugin suda.vim
+	["n|<A-s>"] = map_cu("SudaWrite"):with_silent():with_noremap():with_desc("editn: Save file using sudo"),
 }
 
 bind.nvim_load_mapping(plug_map)

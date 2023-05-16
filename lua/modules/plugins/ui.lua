@@ -1,92 +1,36 @@
 local ui = {}
 
-ui["goolord/alpha-nvim"] = {
-	lazy = true,
-	event = "BufWinEnter",
-	config = require("ui.alpha"),
-}
-ui["akinsho/bufferline.nvim"] = {
-	lazy = true,
-	event = { "BufReadPost", "BufAdd", "BufNewFile" },
-	config = require("ui.bufferline"),
-}
 ui["catppuccin/nvim"] = {
-	lazy = false,
-	name = "catppuccin",
-	config = require("ui.catppuccin"),
+    lazy = false,
+    name = "catppuccin",
+    config = require("ui.catppuccin")
 }
-ui["sainnhe/edge"] = {
-	lazy = true,
-	config = require("ui.edge"),
+
+ui["romgrk/barbar.nvim"] = {
+    dependencies = {'kyazdani42/nvim-web-devicons'},
+    config = require("ui.bar")
 }
-ui["j-hui/fidget.nvim"] = {
-	lazy = true,
-	event = "BufReadPost",
-	config = require("ui.fidget"),
+
+ui["norcalli/nvim-colorizer.lua"] = {
+    config = require("ui.colorizer")
 }
-ui["lewis6991/gitsigns.nvim"] = {
-	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
-	config = require("ui.gitsigns"),
-}
+
 ui["lukas-reineke/indent-blankline.nvim"] = {
-	lazy = true,
-	event = "BufReadPost",
-	config = require("ui.indent-blankline"),
+    config = require("ui.indent")
 }
+
+ui["navarasu/onedark.nvim"] = {
+    config = require("ui.onedark")
+}
+
+ui["luochen1990/rainbow"] = {
+    config = require("ui.rainbow")
+}
+
 ui["nvim-lualine/lualine.nvim"] = {
-	lazy = true,
-	event = { "BufReadPost", "BufAdd", "BufNewFile" },
-	config = require("ui.lualine"),
-}
-ui["zbirenbaum/neodim"] = {
-	lazy = true,
-	event = "LspAttach",
-	config = require("ui.neodim"),
-}
-ui["karb94/neoscroll.nvim"] = {
-	lazy = true,
-	event = "BufReadPost",
-	config = require("ui.neoscroll"),
-}
-ui["shaunsingh/nord.nvim"] = {
-	lazy = true,
-	config = require("ui.nord"),
-}
-ui["rcarriga/nvim-notify"] = {
-	lazy = true,
-	event = "VeryLazy",
-	config = require("ui.notify"),
-}
-ui["folke/paint.nvim"] = {
-	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
-	config = require("ui.paint"),
-}
-ui["dstein64/nvim-scrollview"] = {
-	lazy = true,
-	event = "BufReadPost",
-	config = require("ui.scrollview"),
-}
-ui["edluffy/specs.nvim"] = {
-	lazy = true,
-	event = "CursorMoved",
-	config = require("ui.specs"),
-}
-
-ui["mrjones2014/smart-splits.nvim"] = {
-    lazy = true,
-    build = './kitty/install-kittens.bash',
-    config = require("ui.splits"),
-    dependencies = {
-        'mrjones2014/legendary.nvim',
-    },
-}
-
-ui["nvim-zh/colorful-winsep.nvim"] = {
-	lazy = true,
-	event = { "WinNew" },
-	config = require("ui.colorful-winsep"),
+    dependencies = { -- https://github.com/kyazdani42/nvim-web-devicons
+    'kyazdani42/nvim-web-devicons', 'arkav/lualine-lsp-progress'},
+    config = require("ui.status")
 }
 
 return ui

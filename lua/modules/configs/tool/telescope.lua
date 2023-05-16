@@ -1,77 +1,91 @@
+-- https://github.com/nvim-telescope/telescope.nvim
+
+-- Description:
+-- telescope.nvim is a highly extendable fuzzy finder over lists.
+-- Built on the latest awesome features from neovim core.
+-- Telescope is centered around modularity, allowing for easy customization.
+
 return function()
-	local icons = { ui = require("modules.utils.icons").get("ui", true) }
-	local lga_actions = require("telescope-live-grep-args.actions")
+        local actions = require("telescope.actions")
+        require('telescope').setup({
+                defaults = { mappings = {
+                        i = {
+                                ["<C-j>"] = actions.move_selection_next,
+                                ["<C-k>"] = actions.move_selection_previous, },
+                        n = {
+                                ["<C-j>"] = actions.cycle_history_next,
+                                ["<C-k>"] = actions.cycle_history_prev, } } },
+                extensions = { ["ui-select"] = {
+                        require("telescope.themes").get_dropdown {} } } })
 
-	require("telescope").setup({
-		defaults = {
-			initial_mode = "insert",
-			prompt_prefix = " " .. icons.ui.Telescope .. " ",
-			selection_caret = icons.ui.ChevronRight,
-			scroll_strategy = "limit",
-			results_title = false,
-			layout_strategy = "horizontal",
-			path_display = { "absolute" },
-			file_ignore_patterns = { ".git/", ".cache", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
-			layout_config = {
-				horizontal = {
-					preview_width = 0.5,
-				},
-			},
-			file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-			grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-			qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-			file_sorter = require("telescope.sorters").get_fuzzy_file,
-			generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-		},
-		pickers = {
-			keymaps = {
-				theme = "dropdown",
-			},
-		},
-		extensions = {
-			fzf = {
-				fuzzy = true,
-				override_generic_sorter = true,
-				override_file_sorter = true,
-				case_mode = "smart_case",
-			},
-			frecency = {
-				show_scores = true,
-				show_unindexed = true,
-				ignore_patterns = { "*.git/*", "*/tmp/*" },
-			},
-			live_grep_args = {
-				auto_quoting = true, -- enable/disable auto-quoting
-				-- define mappings, e.g.
-				mappings = { -- extend mappings
-					i = {
-						["<C-k>"] = lga_actions.quote_prompt(),
-						["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-					},
-				},
-			},
-			undo = {
-				side_by_side = true,
-				mappings = { -- this whole table is the default
-					i = {
-						-- IMPORTANT: Note that telescope-undo must be available when telescope is configured if
-						-- you want to use the following actions. This means installing as a dependency of
-						-- telescope in it's `requirements` and loading this extension from there instead of
-						-- having the separate plugin definition as outlined above. See issue #6.
-						["<cr>"] = require("telescope-undo.actions").yank_additions,
-						["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
-						["<C-cr>"] = require("telescope-undo.actions").restore,
-					},
-				},
-			},
-		},
-	})
+        local builtin = "<cmd>lua require('telescope.builtin')."
+        local lsp_prefix = "TELE::LSP:: "
 
-	require("telescope").load_extension("frecency")
-	require("telescope").load_extension("fzf")
-	require("telescope").load_extension("live_grep_args")
-	require("telescope").load_extension("notify")
-	require("telescope").load_extension("projects")
-	require("telescope").load_extension("undo")
-	require("telescope").load_extension("zoxide")
+        local function hook()
+                local wk = require("which-key")
+                local key_opts = {
+                        mode    = "n",
+                        buffer  = 0, -- local mappings
+                        silent  = true, -- use `silent ` when creating keymaps
+                        noremap = true, -- use `noremap` when creating keymaps
+                }
+
+
+                wk.register({
+                        ["gd"] = {
+                                builtin .. "lsp_definitions()<cr>",
+                                lsp_prefix .. "definition" },
+                        ["gr"] = {
+                                builtin .. "lsp_references()<cr>",
+                                lsp_prefix .. "reference" },
+                        ["gi"] = {
+                                builtin .. "lsp_implementations()<cr>",
+                                lsp_prefix .. "implementation" },
+                        ["gy"] = {
+                                builtin .. "lsp_type_definitions()<cr>",
+                                lsp_prefix .. "type definition" },
+                        ["<space>e"] = {
+                                builtin .. "diagnostics()<cr>",
+                                lsp_prefix .. "diagnostics" },
+                        ["<space>s"] = {
+                                builtin .. "lsp_document_symbols()<cr>",
+                                lsp_prefix .. "document symbol" },
+                        ["<space>H"] = {
+                                builtin .. "jumplist()<cr>",
+                                "TELE:: jump list" },
+                        ["<space>M"] = {
+                                builtin .. "marks()<cr>",
+                                "TELE:: mark list" },
+                }, key_opts)
+        end
+
+        table.insert(On_Attach_hooks, hook)
+
+        local wk = require("which-key")
+        local key_opts = {
+                mode    = "n",
+                buffer  = nil, -- Global
+                silent  = true, -- use `silent ` when creating keymaps
+                noremap = true, -- use `noremap` when creating keymaps
+        }
+
+        wk.register({
+                ["te"] = {
+                        builtin .. "find_files()<cr>",
+                        "TELE:: search filename" },
+                ["tr"] = {
+                        builtin .. "live_grep()<cr>",
+                        "TELE:: search in files" },
+                ["tR"] = {
+                        builtin .. "grep_string()<cr>",
+                        "TELE:: search in files" },
+                ["tb"] = {
+                        builtin .. "buffers()<cr>",
+                        "TELE:: buffer list" },
+                ["t?"] = {
+                        builtin .. "help_tags()<cr>",
+                        "TELE:: helps" },
+        }, key_opts)
+
+        require("telescope").load_extension("ui-select")
 end
