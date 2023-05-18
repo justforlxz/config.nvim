@@ -6,6 +6,11 @@ local map_callback = bind.map_callback
 require("keymap.helpers")
 
 local plug_map = {
+    -- Plugin: vim-fugitive
+    ["n|gps"] = map_cr("G push"):with_noremap():with_silent():with_desc("git: Push"),
+    ["n|gpl"] = map_cr("G pull"):with_noremap():with_silent():with_desc("git: Pull"),
+    ["n|<leader>G"] = map_cu("Git"):with_noremap():with_silent():with_desc("git: Open git-fugitive"),
+
     -- Plugin: nvim-tree
     ["n|<C-n>"] = map_cr("NvimTreeToggle"):with_noremap():with_silent():with_desc("filetree: Toggle"),
     -- Plugin: Trans
@@ -60,6 +65,14 @@ local plug_map = {
         :with_silent()
         :with_desc("terminal: Toggle float"),
     ["t|<A-d>"] = map_cmd("<Cmd>ToggleTerm<CR>"):with_noremap():with_silent():with_desc("terminal: Toggle float"),
+
+    ["n|<leader>g"] = map_callback(function()
+            _toggle_lazygit()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("git: Toggle lazygit"),
+
     -- Plugin: trouble
     ["n|gt"] = map_cr("TroubleToggle"):with_noremap():with_silent():with_desc("lsp: Toggle trouble list"),
     ["n|<leader>tr"] = map_cr("TroubleToggle lsp_references")
