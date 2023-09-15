@@ -1,1 +1,58 @@
-return {}
+return {
+	["nx|<A-h>"] = require("keymap.bind")
+		.map_callback(function()
+			require("smart-splits").resize_left()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("resize left"),
+	["nx|<A-j>"] = require("keymap.bind")
+		.map_callback(function()
+			require("smart-splits").resize_down()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("resize down"),
+	["nx|<A-k>"] = require("keymap.bind")
+		.map_callback(function()
+			require("smart-splits").resize_up()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("resize up"),
+	["nx|<A-l>"] = require("keymap.bind")
+		.map_callback(function()
+			require("smart-splits").resize_right()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("resize right"),
+	["nx|<C-h>"] = require("keymap.bind")
+		.map_callback(function()
+			require("smart-splits").move_cursor_left()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("move left"),
+	["nx|<C-j>"] = require("keymap.bind")
+		.map_callback(function()
+			require("smart-splits").move_cursor_down()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("move down"),
+	["nx|<C-k>"] = require("keymap.bind")
+		.map_callback(function()
+			require("smart-splits").move_cursor_up()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("move up"),
+	["nx|<C-l>"] = require("keymap.bind")
+		.map_callback(function()
+			require("smart-splits").move_cursor_right()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("move right"),
+}
