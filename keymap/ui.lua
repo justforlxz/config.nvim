@@ -1,4 +1,14 @@
 return {
+	["n|<Tab>"] = require("keymap.bind")
+		.map_cr("BufferLineCycleNext")
+		:with_noremap()
+		:with_silent()
+		:with_desc("buffer: Switch to next"),
+	["n|<S-Tab>"] = require("keymap.bind")
+		.map_cr("BufferLineCyclePrev")
+		:with_noremap()
+		:with_silent()
+		:with_desc("buffer: Switch to prev"),
 	["nx|<A-h>"] = require("keymap.bind")
 		.map_callback(function()
 			require("smart-splits").resize_left()
