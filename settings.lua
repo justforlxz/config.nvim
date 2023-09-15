@@ -16,6 +16,11 @@ settings["server_formatting_block_list"] = {
     tsserver = true,
     clangd = true,
     pylsp = true,
+    volar = true,
+}
+
+settings["formatter_block_list"] = {
+	lua = false, -- example
 }
 
 -- Set the language servers that will be installed during bootstrap here.
@@ -35,6 +40,8 @@ settings["lsp_deps"] = function(defaults)
         "rust_analyzer",
         "eslint",
         "tsserver",
+        "tailwindcss",
+        "volar",
     }
 
     local jit = require("jit")
@@ -64,7 +71,6 @@ end
 ---@type string[]
 settings["null_ls_deps"] = {
     "prettier",
-    "rustfmt",
     "cmakelang",
     "beautysh",
     "shfmt",
