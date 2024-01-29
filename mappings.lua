@@ -136,16 +136,6 @@ M.ufo = {
         require("ufo").closeAllFolds()
       end,
     },
-    ["zr"] = {
-      function()
-        require("ufo").openFoldsExceptKinds()
-      end,
-    },
-    ["zm"] = {
-      function()
-        require("ufo").closeFoldsWith()
-      end,
-    },
     ["K"] = {
       function()
         local winid = require("ufo").peekFoldedLinesUnderCursor()
@@ -176,4 +166,22 @@ M.glance = {
     ["gy"] = { "<cmd>Glance type_definitions<CR>", "Glance type_definitions" },
   },
 }
+
+M.nvim_dap = {
+  n = {
+    ["<leader>dl"] = { "<cmd>lua require'dap'.step_into()<CR>", "debugger step into" },
+    ["<leader>dj"] = { "<cmd>lua require'dap'.step_over()<CR>", "debugger step over" },
+    ["<leader>dk"] = { "<cmd>lua require'dap'.step_out()<CR>", "debugger step out" },
+    ["<leader>d<space>"] = { "<cmd>lua require'dap'.continue()<CR>", "debugger continue" },
+    ["<leader>dbp"] = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "debugger toggle breakpoint" },
+    ["<leader>dd"] = {
+      "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+      "debugger set conditional breakpoint",
+    },
+    ["<leader>de"] = { "<cmd>lua require'dap'.terminate()<CR>", "debugger reset" },
+    ["<leader>dr"] = { "<cmd>lua require'dap'.run_last()<CR>", "debugger reset" },
+    -- map("n", "<leader>m", ":MaximizerToggle!<CR>", { noremap = true })
+  },
+}
+
 return M

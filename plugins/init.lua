@@ -7,19 +7,20 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      -- format & linting
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-    },
     config = function()
       require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require "custom.configs.lsp"
     end, -- Override to setup mason-lspconfig
+  },
+
+  {
+    "stevearc/conform.nvim",
+    --  for users those who want auto-save conform + lazyloading!
+    opts = require "custom.configs.lsp.conform",
+    event = "BufWritePre",
+    config = function(_, opts)
+      require("conform").setup(opts)
+    end,
   },
 
   -- override plugin configs
@@ -181,21 +182,21 @@ local plugins = {
     },
   },
 
-  {
-    "kevinhwang91/nvim-ufo",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-      "kevinhwang91/promise-async",
-    },
-    opts = require "custom.configs.nvim-ufo",
-    config = function(_, opts)
-      require("ufo").setup(opts)
-      vim.opt.foldlevel = 99
-      vim.opt.foldlevelstart = 99
-      vim.opt.foldcolumn = "0"
-      vim.opt.foldenable = true
-    end,
-  },
+  -- {
+  --   "kevinhwang91/nvim-ufo",
+  --   event = { "BufReadPost", "BufNewFile" },
+  --   dependencies = {
+  --     "kevinhwang91/promise-async",
+  --   },
+  --   opts = require "custom.configs.nvim-ufo",
+  --   config = function(_, opts)
+  --     require("ufo").setup(opts)
+  --     vim.opt.foldlevel = 99
+  --     vim.opt.foldlevelstart = 99
+  --     vim.opt.foldcolumn = "0"
+  --     vim.opt.foldenable = true
+  --   end,
+  -- },
 
   {
     "dnlhc/glance.nvim",
@@ -214,6 +215,39 @@ local plugins = {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
   -- }
+
+  -- DAP
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require "custom.configs.dap"
+    end,
+  },
+
+  {
+    "rcarriga/nvim-dap-ui",
+    config = function()
+      require("dapui").setup()
+    end,
+    requires = { "mfussenegger/nvim-dap" },
+  },
+
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    config = function()
+      require("nvim-dap-virtual-text").setup()
+    end,
+    requires = { "mfussenegger/nvim-dap" },
+  },
+
+  -- escape using key combo (currently set to jk)
+  {
+    "max397574/better-escape.nvim",
+    event = "InsertEnter",
+    config = function()
+      require "custom.configs.betterescape"
+    end,
+  },
 }
 
 return plugins
