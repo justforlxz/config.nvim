@@ -17,3 +17,6 @@ end, { desc = "Format buffer once" })
 -- Plugin: toggleterm
 map({ "n", "i" }, "<A-d>", "<cmd>ToggleTerm direction=float<cr>", { desc = "terminal: Toggle float" })
 map("t", "<A-d>", "<Cmd>ToggleTerm<CR>", { desc = "terminal: Toggle float" })
+
+-- Plugin: lspsaga
+map("n", "<leader>ca", "<Cmd>Lspsaga code_action<CR>", { desc = "Lsp: code action" })
