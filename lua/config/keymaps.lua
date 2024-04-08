@@ -20,3 +20,4 @@ map("t", "<A-d>", "<Cmd>ToggleTerm<CR>", { desc = "terminal: Toggle float" })
 
 -- Plugin: lspsaga
 map("n", "<leader>ca", "<Cmd>Lspsaga code_action<CR>", { desc = "Lsp: code action" })
+map("n", "gh", "<Cmd>Lspsaga finder<CR>", { desc = "Lsp: peek definition" })
