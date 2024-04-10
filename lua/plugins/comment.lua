@@ -3,6 +3,7 @@ return {
   opts = {
     config = {
       cpp = "// %s",
+      qmljs ="// %s",
     },
   },
 }
