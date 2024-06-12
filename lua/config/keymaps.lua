@@ -10,8 +10,9 @@ map({ "n", "v" }, "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy repl
 -- map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 -- map("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<A-f>", function()
-  require("conform").format()
-  vim.notify("Format successful!")
+  if require("conform").format({ lsp_fallback = true }) then
+    vim.notify("File format applied", vim.log.levels.INFO)
+  end
 end, { desc = "Format buffer once" })
 
 -- Plugin: toggleterm
@@ -24,18 +25,18 @@ map("n", "gh", "<Cmd>Lspsaga finder<CR>", { desc = "Lsp: peek definition" })
 
 -- Plugin: smart-split
 -- recommended mappings
-vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
-vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
-vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
-vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
+vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
+vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
+vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
+vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
 -- moving between splits
-vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
-vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
-vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
-vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
-vim.keymap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)
+vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
 -- swapping buffers between windows
-vim.keymap.set('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
-vim.keymap.set('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
-vim.keymap.set('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
-vim.keymap.set('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
+vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
+vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
+vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
+vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
