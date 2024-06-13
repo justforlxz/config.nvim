@@ -1,7 +1,7 @@
 return {
   "tokyonight.nvim",
   opts = {
-    -- transparent = true,
+    transparent = true,
     styles = {
       sidebars = "transparent",
       floats = "transparent",

@@ -5,6 +5,41 @@
 local Util = require("lazyvim.util")
 local map = Util.safe_keymap_set
 
+require("lazyvim.util").lsp.on_attach(function(client, buffer)
+  local function opts(desc)
+    return { buffer = buffer, desc = desc }
+  end
+
+  map("n", "gD", vim.lsp.buf.declaration, opts("Lsp Go to declaration"))
+  map("n", "gd", "<cmd>Glance definitions<CR>", opts("Lsp Go to definition"))
+  map("n", "K", vim.lsp.buf.hover, opts("Lsp hover information"))
+  map("n", "gi", "<cmd>Glance implementations<CR>", opts("Lsp Go to implementation"))
+  map("n", "<C-k>", vim.lsp.buf.signature_help, opts("Lsp Show signature help"))
+  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("Lsp Add workspace folder"))
+  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("Lsp Remove workspace folder"))
+  map("n", "<leader>wl", function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, opts("Lsp List workspace folders"))
+
+  if client.name == "clangd" then
+    map("n", "gs", "<cmd>ClangdSwitchSourceHeader<CR>", opts("Lsp Switch C/C++ header source"))
+  end
+
+  map("n", "gy", "<cmd>Glance type_definitions<CR>", opts("Lsp Go to type definition"))
+  map("n", "go", "<cmd>AerialToggle!<CR>", opts("Lsp Show outline"))
+  map("n", "[", "<cmd>AerialPrev<CR>", opts("Lsp Previous symbol"))
+  map("n", "]", "<cmd>AerialNext<CR>", opts("Lsp Next symbol"))
+
+  map("n", "gr", function()
+    require("nvchad.lsp.renamer")()
+  end, opts("Lsp NvRenamer"))
+
+  map({ "n", "v" }, "ga", function()
+    require("actions-preview").code_actions()
+  end, opts("Lsp Code action"))
+  map("n", "gh", "<cmd>Glance references<CR>", opts("Lsp Show references"))
+end)
+
 map({ "n", "v" }, "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text" })
 
 -- map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
@@ -18,10 +53,6 @@ end, { desc = "Format buffer once" })
 -- Plugin: toggleterm
 map({ "n", "i" }, "<A-d>", "<cmd>ToggleTerm direction=float<cr>", { desc = "terminal: Toggle float" })
 map("t", "<A-d>", "<Cmd>ToggleTerm<CR>", { desc = "terminal: Toggle float" })
-
--- Plugin: lspsaga
-map("n", "<leader>ca", "<Cmd>Lspsaga code_action<CR>", { desc = "Lsp: code action" })
-map("n", "gh", "<Cmd>Lspsaga finder<CR>", { desc = "Lsp: peek definition" })
 
 -- Plugin: smart-split
 -- recommended mappings
