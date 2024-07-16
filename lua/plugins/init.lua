@@ -2,11 +2,11 @@ local global = require "global"
 
 return {
   -- disable
+  -- overrides
   {
     "lukas-reineke/indent-blankline.nvim",
     config = require "configs.indent",
   },
-  -- overrides
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -53,9 +53,18 @@ return {
   {
     "numToStr/Comment.nvim",
     event = "BufRead",
-    config = function()
+    opts = function()
+      return {
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      }
+    end,
+    config = function(_, opts)
+      require("Comment").setup(opts)
       require("Comment.ft").set("qmljs", "//%s")
     end,
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
   },
 
   -- add plugins to here

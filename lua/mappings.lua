@@ -12,6 +12,13 @@ unmap("n", "<leader>h")
 unmap("n", "<leader>v")
 unmap("n", "<leader>fm")
 unmap("n", "<leader>fw")
+unmap("n", "<leader>fa")
+unmap("n", "<leader>fb")
+unmap("n", "<leader>ff")
+unmap("n", "<leader>fh")
+unmap("n", "<leader>fo")
+unmap("n", "<leader>fz")
+unmap("n", "<leader>ds")
 
 -- general
 map("i", "jk", "<ESC>")
@@ -25,6 +32,7 @@ map("i", "<C-s>", "<Esc><CMD>w!<CR>", { desc = "File Save file" })
 map("n", "<A-S-q>", "<CMD>q!<CR>", { desc = "Nvim Force quit" })
 map("i", "<A-S-q>", "<Esc><CMD>q!<CR>", { desc = "Nvim Force quit" })
 
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "lsp diagnostic loclist" })
 -- plugins
 -- fonform
 map({ "n", "i", "v" }, "<A-f>", function()
@@ -44,9 +52,12 @@ map({ "n", "i" }, "<A-q>", function()
 end, { desc = "Buffer Close" })
 
 -- telescope
-map("n", "<leader>fs", "<CMD>Telescope grep_string<CR>", { desc = "Telescope Find current word" })
-map("n", "<leader>fd", "<CMD>Telescope diagnostics<CR>", { desc = "Telescope Find workspace diagnostics" })
-map("n", "<leader>fw", function()
+map("n", "fs", "<CMD>Telescope grep_string<CR>", { desc = "Telescope Find current word" })
+map("n", "fd", "<CMD>Telescope diagnostics<CR>", { desc = "Telescope Find workspace diagnostics" })
+map("n", "fr", "<CMD>Telescope resume<CR>", { desc = "Telescope Resume" })
+map("n", "fk", "<CMD>Telescope keymaps<CR>", { desc = "Telescope Find keymaps" })
+map("n", "ff", "<CMD>Telescope find_files<CR>", { desc = "Telescope Find files" })
+map("n", "fw", function()
   require("telescope").extensions.live_grep_args.live_grep_args()
 end, { desc = "Telescope Live grep" })
 

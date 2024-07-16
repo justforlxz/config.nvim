@@ -23,19 +23,3 @@ autocmd("BufRead", {
   end,
 })
 
-autocmd("BufRead", {
-  pattern = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" },
-  callback = function(data)
-    local api = require "image"
-    local pic_path = vim.api.nvim_buf_get_name(data.buf)
-    local image = api.from_file(pic_path {
-      buffer = data.buf, -- optional, binds image to a buffer (paired with window binding)
-      with_virtual_padding = true, -- optional, pads vertically with extmarks, defaults to false
-
-      -- optional, binds image to an extmark which it follows. Forced to be true when
-      -- `with_virtual_padding` is true. defaults to false.
-      inline = true,
-    })
-    image.render()
-  end,
-})
