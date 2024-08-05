@@ -10,8 +10,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
-      require("configs.lspconfig").defaults()
+      require "configs.lspconfig"
     end,
   },
   {
@@ -67,18 +66,22 @@ return {
     },
   },
 
-  -- add plugins to here
   {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
+    "MeanderingProgrammer/markdown.nvim",
+    main = "render-markdown",
+    opts = {
+      file_types = { 'markdown', 'vimwiki' },
+      latex = { enabled = false }
+    },
+    ft = { "markdown", "vimwiki" },
+    config = function(_, opts)
+      require("render-markdown").setup(opts)
+      vim.treesitter.language.register('markdown', 'vimwiki')
+      require('render-markdown').enable()
     end,
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    ft = "markdown",
-    build = ":call mkdp#util#install()",
+    -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
   },
   {
     "stevearc/conform.nvim",

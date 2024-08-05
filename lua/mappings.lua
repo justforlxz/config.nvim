@@ -70,7 +70,9 @@ map("n", "dv", "<CMD>DiffviewOpen<CR>", { desc = "Diffview Open diff view" })
 map("n", "dc", "<CMD>DiffviewClose<CR>", { desc = "Diffview Close diff view" })
 
 -- markdown
-map("n", "<F12>", "<CMD>MarkdownPreviewToggle<CR>", { desc = "Markdown Preview" })
+map("n", "<F12>", function()
+  require("render-markdown").toggle()
+end, { desc = "Markdown Preview" })
 
 -- trillspace
 map("n", "<A-t>", function()

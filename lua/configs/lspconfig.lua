@@ -1,15 +1,17 @@
-local M = {}
+-- load defaults i.e lua_lsp
+require("nvchad.configs.lspconfig").defaults()
+
 local lspconfig = require "lspconfig"
 
 -- export on_attach & capabilities for custom lspconfigs
-M.on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
   local map = vim.keymap.set
   local conf = require("nvconfig").lsp
   local tc_builtin = require "telescope.builtin"
   local function opts(desc)
     return { buffer = bufnr, desc = desc }
   end
-  if client.server_capabilities.inlayHintProvider then
+  if client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
     vim.lsp.inlay_hint.enable(true)
   end
 
@@ -66,12 +68,11 @@ local servers = {
     },
     filetypes = { "c", "cpp" },
     single_file_support = false,
-    offsetEncoding = { "utf-8", "utf-16" },
+    capabilities = { offsetEncoding = { "utf-8", "utf-16" } },
   },
   pylsp = {},
   bashls = {},
   jsonls = {},
-  qmlls = {},
   neocmake = {},
   lua_ls = {},
   rust_analyzer = {},
@@ -79,16 +80,11 @@ local servers = {
   tsserver = {},
 }
 
-M.defaults = function()
-  local capabilities = require("nvchad.configs.lspconfig").capabilities
-  local on_init = require("nvchad.configs.lspconfig").on_init
-  for name, opts in pairs(servers) do
-    opts.on_init = on_init
-    opts.on_attach = M.on_attach
-    opts.capabilities = capabilities
+local nvlsp = require "nvchad.configs.lspconfig"
+for name, opts in pairs(servers) do
+  opts.on_init = nvlsp.on_init
+  opts.on_attach = on_attach
+  opts.capabilities = nvlsp.capabilities
 
-    require("lspconfig")[name].setup(opts)
-  end
+  lspconfig[name].setup(opts)
 end
-
-return M

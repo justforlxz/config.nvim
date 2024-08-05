@@ -11,7 +11,6 @@ return {
     "ini",
     "javascript",
     "json",
-    "latex",
     "lua",
     "make",
     "markdown",
