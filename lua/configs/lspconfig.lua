@@ -78,6 +78,7 @@ local servers = {
   rust_analyzer = {},
   taplo = {},
   tsserver = {},
+  csharp_ls = {},
 }
 
 local nvlsp = require "nvchad.configs.lspconfig"
