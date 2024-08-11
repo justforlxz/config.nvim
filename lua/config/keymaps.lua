@@ -4,29 +4,11 @@
 
 local Util = require("lazyvim.util")
 local map = Util.safe_keymap_set
-local unmap = vim.keymap.del
 
 require("lazyvim.util").lsp.on_attach(function(client, buffer)
   local function opts(desc)
     return { buffer = buffer, desc = desc }
   end
-
-  unmap("n", "gD")
-  unmap("n", "gd")
-  unmap("n", "K")
-  unmap("n", "gi")
-  unmap("n", "<C-k>")
-  unmap("n", "<leader>wa")
-  unmap("n", "<leader>wr")
-  unmap("n", "<leader>wl")
-  unmap("n", "gs")
-  unmap("n", "gy")
-  unmap("n", "go")
-  unmap("n", "[")
-  unmap("n", "]")
-  unmap("n", "gr")
-  unmap({ "n", "v" }, "ga")
-  unmap("n", "gh")
 
   map("n", "gD", vim.lsp.buf.declaration, opts("Lsp Go to declaration"))
   map("n", "gd", "<cmd>Glance definitions<CR>", opts("Lsp Go to definition"))
