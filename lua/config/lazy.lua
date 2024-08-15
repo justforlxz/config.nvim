@@ -35,7 +35,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.util.dot" },
     { import = "lazyvim.plugins.extras.util.gitui" },
     { import = "lazyvim.plugins.extras.util.project" },
-    { import = "lazyvim.plugins.extras.coding.codeium" },
     { import = "lazyvim.plugins.extras.coding.mini-comment" },
     -- import/override with your plugins
     { import = "override" },
@@ -53,7 +52,7 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "vscode" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {

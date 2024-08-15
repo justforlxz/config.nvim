@@ -1,5 +1,9 @@
 return {
   "nvimdev/lspsaga.nvim",
+  event = "LspAttach",
+  opts = {
+    beacon = false,
+  },
   config = function()
     require("lspsaga").setup({})
   end,

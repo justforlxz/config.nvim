@@ -4,7 +4,7 @@ return {
     {
       "<A-f>",
       function()
-        if require("conform").format { lsp_fallback = true } then
+        if require("conform").format({ lsp_fallback = true }) then
           vim.notify("File format applied", vim.log.levels.INFO)
         end
       end,
@@ -21,6 +21,7 @@ return {
         command = "qmlformat",
         args = { "$FILENAME" },
       },
+      markdown = { "prettier" },
     },
   },
 }
