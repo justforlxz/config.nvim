@@ -1,5 +1,27 @@
 return {
   "telescope.nvim",
+  keys = {
+    {
+      "<leader>fs",
+      "<CMD>Telescope grep_string<CR>",
+      "n",
+      desc = "Telescope Find current word",
+    },
+    {
+      "<leader>fr",
+      "<CMD>Telescope resume<CR>",
+      "n",
+      desc = "Telescope Resume",
+    },
+    {
+      "<leader>fw",
+      function()
+        require("telescope").extensions.live_grep_args.live_grep_args()
+      end,
+      "n",
+      desc = "Telescope Live grep",
+    },
+  },
   dependencies = {
     {
       "nvim-telescope/telescope-live-grep-args.nvim",

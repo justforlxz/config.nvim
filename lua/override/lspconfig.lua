@@ -1,5 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
+  priority = 50,
   opts = {
     inlay_hints = {
       enabled = true,
