@@ -5,6 +5,11 @@ return {
     inlay_hints = {
       enabled = true,
     },
+    diagnostics = {
+      float = {
+        border = "rounded",
+      },
+    },
     codelens = {
       enabled = true,
     },

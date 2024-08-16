@@ -1,9 +1,10 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  config = function()
-    require("avante").setup({})
-  end,
+  opts = {
+    provider = "openai",
+  },
+  build = "make",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     {

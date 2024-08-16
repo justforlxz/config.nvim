@@ -60,7 +60,10 @@ return {
       { name = "path" },
       { name = "crates" },
     },
-    window = {},
+    window = {
+      completion = require("cmp").config.window.bordered(),
+      documentation = require("cmp").config.window.bordered(),
+    },
     formatting = {
       format = function(entry, vim_item)
         -- Kind icons

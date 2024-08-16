@@ -16,7 +16,7 @@ require("lazyvim.util").lsp.on_attach(function(client, buffer)
     if client.name == "rust-analyzer" then
       vim.cmd.RustLsp { "hover", "actions" }
     else
-      lsp.buf.hover()
+      vim.lsp.buf.hover()
     end
   end, opts "Lsp hover information")
   map("n", "gi", "<cmd>Glance implementations<CR>", opts("Lsp Go to implementation"))
