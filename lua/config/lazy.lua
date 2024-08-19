@@ -17,7 +17,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.cmake" },
-    { import = "lazyvim.plugins.extras.lang.clangd" },
     -- cursor animate
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- scope animate
