@@ -1,10 +1,10 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   opts = {
-    file_types = { "markdown", "vimwiki" },
+    file_types = { "markdown", "vimwiki", "Avante" },
     latex = { enabled = false },
   },
-  ft = { "markdown", "vimwiki" },
+  ft = { "markdown", "vimwiki", "Avante" },
   config = function(_, opts)
     vim.treesitter.language.register("markdown", "vimwiki")
   end,
