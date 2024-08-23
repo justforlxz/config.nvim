@@ -18,6 +18,10 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.cmake" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
+    { import = "lazyvim.plugins.extras.lang.git" },
+
+    { import = "lazyvim.plugins.extras.lsp.neoconf" },
+
     -- cursor animate
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- scope animate
@@ -36,7 +40,11 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.util.dot" },
     { import = "lazyvim.plugins.extras.util.gitui" },
     { import = "lazyvim.plugins.extras.util.project" },
+    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+    { import = "lazyvim.plugins.extras.util.octo" },
+
     { import = "lazyvim.plugins.extras.coding.mini-comment" },
+    { import = "lazyvim.plugins.extras.coding.copilot" },
 
     -- import groveer
     { "Groveer/nvchad-starter", import = "plugins/add/avante" },
