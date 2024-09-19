@@ -47,9 +47,10 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.copilot" },
 
     -- import groveer
-    { "Groveer/nvchad-starter", import = "plugins/add/avante" },
-    { "Groveer/nvchad-starter", import = "plugins/add/markdown" },
-    { "Groveer/nvchad-starter", import = "plugins/add/suda" },
+    { "Groveer/nvimdots", import = "plugins/ai/avante" },
+    { "Groveer/nvimdots", import = "plugins/render/markdown" },
+    { "Groveer/nvimdots", import = "plugins/editor/suda" },
+    { "Groveer/nvimdots", import = "plugins/ui/noice" },
 
     -- import/override with your plugins
     { import = "override" },

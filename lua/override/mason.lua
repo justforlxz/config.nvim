@@ -31,10 +31,14 @@ return {
       "python-lsp-server",
 
       -- latex stuff
-      -- "latexindent", -- formatter
+      "latexindent", -- formatter
 
       -- cmake stuff
-      -- "neocmakelsp",
+      "neocmakelsp",
+
+      -- xml stuff
+      "lemminx",
+      "xmlformatter",
     },
   },
 }
