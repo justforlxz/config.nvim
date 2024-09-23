@@ -42,4 +42,4 @@ if jit.os == "Linux" and jit.arch == "arm64" then
 end
 
 -- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+require("lxz.config.lazy")
