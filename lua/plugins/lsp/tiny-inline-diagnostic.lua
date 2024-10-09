@@ -1,6 +1,6 @@
 return {
   "rachartier/tiny-inline-diagnostic.nvim",
-  event = "LspAttach",
+  event = { "CursorMoved", "CursorHold" },
   dependencies = { "neovim/nvim-lspconfig" },
   config = function()
     require("tiny-inline-diagnostic").setup()

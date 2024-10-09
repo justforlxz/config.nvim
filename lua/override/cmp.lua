@@ -44,7 +44,6 @@ local kind_icons = {
 
 return {
   "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
   opts = {
     view = {
       entries = {
