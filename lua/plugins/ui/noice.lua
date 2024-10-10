@@ -1,6 +1,6 @@
 return {
   "folke/noice.nvim",
-  event = "UIEnter",
+  event = "VeryLazy",
   opts = {
     lsp = {
       signature = { auto_open = { enabled = false } },

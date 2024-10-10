@@ -21,11 +21,11 @@ return {
       map({ "n", "t" }, "<C-/>", function()
         require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
       end, { desc = "Terminal Toggle floating term" })
-      map("n", "<tab>", function()
+      map("n", "<S-l>", function()
         require("nvchad.tabufline").next()
       end, { desc = "Buffer goto next" })
 
-      map("n", "<S-tab>", function()
+      map("n", "<S-h>", function()
         require("nvchad.tabufline").prev()
       end, { desc = "Buffer goto prev" })
 
