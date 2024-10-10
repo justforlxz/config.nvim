@@ -29,6 +29,7 @@ end
 
 M.lazy_config = {
   spec = {
+    { "Groveer/nvvim", import = "nvvim.plugins" },
     { import = "plugins" },
   },
   defaults = { lazy = true },

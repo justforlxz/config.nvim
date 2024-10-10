@@ -18,7 +18,7 @@ return {
 
       local map = vim.keymap.set
       map("n", "<leader>ch", "<CMD>NvCheatsheet<CR>", { desc = "Toggle nvcheatsheet" })
-      map({ "n", "t" }, "<A-d>", function()
+      map({ "n", "t" }, "<C-/>", function()
         require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
       end, { desc = "Terminal Toggle floating term" })
       map("n", "<tab>", function()

@@ -14,6 +14,7 @@ return {
   { import = "plugins.editor.smartyank" },
   { import = "plugins.editor.todo-comments" },
   { import = "plugins.editor.trailspace" },
+  { import = "plugins.editor.smart-splits" },
   { import = "plugins.format.conform" },
   { import = "plugins.lsp.actions-preview" },
   { import = "plugins.lsp.aerial" },
