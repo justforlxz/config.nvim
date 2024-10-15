@@ -30,7 +30,7 @@ o.numberwidth = 2
 o.ruler = false
 
 -- disable nvim intro
-opt.shortmess:append "sI"
+opt.shortmess:append("sI")
 
 o.signcolumn = "yes"
 o.splitbelow = true
@@ -43,7 +43,7 @@ o.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+opt.whichwrap:append("<>[]hl")
 
 -- disable some default providers
 g.loaded_node_provider = 0
@@ -62,6 +62,11 @@ o.splitkeep = "screen"
 
 opt.termguicolors = true
 
+-- spell check
+opt.spell = true
+opt.spelllang = { "en_us", "cjk" }
+opt.spelloptions = "camel"
+
 -- filetype for plantuml
 command("au BufNewFile,BufRead *.puml setfiletype plantuml")
 command("au BufNewFile,BufRead *.pu setfiletype plantuml")
@@ -70,4 +75,3 @@ command("au BufNewFile,BufRead *.uml setfiletype plantuml")
 command("au BufNewFile,BufRead *.iuml setfiletype plantuml")
 -- filetype for qml
 command("au BufNewFile,BufRead *.qml setfiletype qmljs")
-

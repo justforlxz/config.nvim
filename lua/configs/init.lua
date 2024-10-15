@@ -127,6 +127,8 @@ M.lsp_on_attach = function(client, bufnr)
   map("n", "go", "<cmd>AerialToggle!<CR>", opts("Lsp Show outline"))
   map("n", "[", "<cmd>AerialPrev<CR>", opts("Lsp Previous symbol"))
   map("n", "]", "<cmd>AerialNext<CR>", opts("Lsp Next symbol"))
+  map("n", "]g", vim.diagnostic.get_next)
+  map("n", "[g", vim.diagnostic.get_prev)
 
   map("n", "gr", function()
     local has_nvchad, renamer = pcall(require, "nvchad.lsp.renamer")

@@ -35,7 +35,7 @@ return {
   { import = "plugins.tools.which-key" },
   { import = "plugins.ui.diffview" },
   { import = "plugins.ui.neoscroll" },
-  -- { import = "plugins.ui.noice" },
+  { import = "plugins.ui.noice" },
   { import = "plugins.ui.nvim-tree" },
   { import = "plugins.ui.nvim-treesitter-context" },
   { import = "plugins.ui.nvim-web-devicons" },

@@ -34,3 +34,6 @@ map("i", "<A-S-q>", "<Esc><CMD>q!<CR>", { desc = "Nvim Force quit" })
 
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "lsp diagnostic loclist" })
 
+-- spell check
+map('n', ']s', ']s', { noremap = true, silent = true })
+map('n', '[s', '[s', { noremap = true, silent = true })
