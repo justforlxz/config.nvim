@@ -25,7 +25,7 @@ local function cmp_opts()
     fields = fields,
 
     format = function(entry, item)
-      local icons = require("configs").icons.kinds
+      local icons = require("configs.lsp").icons.kinds
 
       item.menu = cmp_ui.lspkind_text and item.kind or ""
       item.menu_hl_group = atom_styled and "LineNr" or "CmpItemKind" .. (item.kind or "")

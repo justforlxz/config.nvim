@@ -61,8 +61,9 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("configs.options")
-require("configs.autocmds")
-require("configs.mappings")
+require("options")
+require("autocmds")
+require("mappings")
+require("utils")
 
-require("lazy").setup(require("configs").lazy_config)
+require("lazy").setup(require("configs.lazy"))

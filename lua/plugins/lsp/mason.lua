@@ -39,7 +39,7 @@ return {
 
     ui = {
       border = "rounded",
-      icons = require("configs").icons.mason,
+      icons = require("configs.lsp").icons.mason,
     },
 
     max_concurrent_installers = 10,

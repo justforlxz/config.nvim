@@ -1,18 +1,5 @@
 local M = {}
 
-function M:load_variables()
-  local os_name = vim.loop.os_uname().sysname
-  self.is_mac = os_name == "Darwin"
-  self.is_linux = os_name == "Linux"
-  self.is_windows = os_name == "Windows_NT"
-  self.is_wsl = vim.fn.has("wsl") == 1
-  self.vim_path = vim.fn.stdpath("config")
-  local home = self.is_windows and os.getenv("USERPROFILE") or os.getenv("HOME")
-  self.home = home
-end
-
-M:load_variables()
-
 function M.add_cmp_source(source, index)
   local has_cmp, cmp = pcall(require, "cmp")
   if has_cmp then
@@ -26,66 +13,6 @@ function M.add_cmp_source(source, index)
     cmp.setup(config)
   end
 end
-
-M.lazy_config = {
-  spec = {
-    -- { "Groveer/nvvim", import = "nvvim.plugins" },
-    { import = "plugins" },
-  },
-  defaults = { lazy = true },
-  install = { colorscheme = { "nvchad" } },
-
-  rocks = {
-    enabled = false,
-  },
-  ui = {
-    border = "rounded",
-    icons = {
-      ft = "",
-      lazy = "󰂠 ",
-      loaded = "",
-      not_loaded = "",
-    },
-  },
-  checker = {
-    enabled = true, -- check for plugin updates periodically
-    notify = false, -- notify on update
-  }, -- automatically check for plugin updates
-
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "2html_plugin",
-        "tohtml",
-        "getscript",
-        "getscriptPlugin",
-        "gzip",
-        "logipat",
-        "netrw",
-        "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
-        "matchit",
-        "tar",
-        "tarPlugin",
-        "rrhelper",
-        "spellfile_plugin",
-        "vimball",
-        "vimballPlugin",
-        "zip",
-        "zipPlugin",
-        "tutor",
-        "rplugin",
-        "syntax",
-        "synmenu",
-        "optwin",
-        "compiler",
-        "bugreport",
-        "ftplugin",
-      },
-    },
-  },
-}
 
 M.lsp_on_attach = function(client, bufnr)
   local map = vim.keymap.set

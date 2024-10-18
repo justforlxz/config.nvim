@@ -36,7 +36,7 @@ return {
     "hrsh7th/nvim-cmp",
   },
   config = function(_, opts)
-    require("configs").add_cmp_source("minuet", 2)
+    require("configs.lsp").add_cmp_source("minuet", 2)
     require("minuet").setup(opts)
   end,
 }

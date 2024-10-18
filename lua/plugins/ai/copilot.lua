@@ -16,7 +16,7 @@ return {
         "hrsh7th/nvim-cmp",
       },
       config = function(_, opts)
-        require("configs").add_cmp_source("copilot", 1)
+        require("configs.lsp").add_cmp_source("copilot", 1)
         require("copilot_cmp").setup(opts)
       end,
     },

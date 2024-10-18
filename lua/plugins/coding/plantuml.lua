@@ -15,5 +15,5 @@ return {
   dependencies = {
     "javiorfo/nvim-nyctophilia",
   },
-  enabled = require("configs").is_linux,
+  enabled = require("utils").is_linux,
 }

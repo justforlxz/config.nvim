@@ -9,7 +9,7 @@ return {
         },
       },
       server = {
-        on_attach = require("configs").lsp_on_attach,
+        on_attach = require("configs.lsp").lsp_on_attach,
       },
     }
   end,

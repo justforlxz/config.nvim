@@ -40,4 +40,8 @@ return {
   { import = "plugins.ui.nvim-treesitter-context" },
   { import = "plugins.ui.nvim-web-devicons" },
   { import = "plugins.ui.nvui" },
+  { import = "plugins.dap.dap" },
+  { import = "plugins.dap.dap-ui" },
+  { import = "plugins.dap.dap-virtual-text" },
+  { import = "plugins.dap.mason-dap" },
 }

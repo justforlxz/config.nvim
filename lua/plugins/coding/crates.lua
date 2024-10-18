@@ -9,7 +9,7 @@ return {
     },
     lsp = {
       enabled = true,
-      on_attach = require("configs").lsp_on_attach,
+      on_attach = require("configs.lsp").lsp_on_attach,
       actions = true,
       completion = true,
       hover = true,
@@ -17,7 +17,7 @@ return {
   },
 
   config = function(_, opts)
-    require("configs").add_cmp_source("crates", 3)
+    require("configs.lsp").add_cmp_source("crates", 3)
     return require("crates").setup(opts)
   end,
 }
