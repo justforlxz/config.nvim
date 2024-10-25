@@ -39,15 +39,18 @@ return {
     indent = { enable = true },
   },
   dependencies = {
-    "hiphish/rainbow-delimiters.nvim",
-    config = function(_, opts)
-      local cache_dir = vim.g.base46_cache .. "rainbowdelimiters"
-      if vim.g.base46_cache and vim.uv.fs_stat(cache_dir) then
-        dofile(cache_dir)
-      end
+    {
+      "hiphish/rainbow-delimiters.nvim",
+      config = function(_, opts)
+        local cache_dir = vim.g.base46_cache .. "rainbowdelimiters"
+        if vim.g.base46_cache and vim.uv.fs_stat(cache_dir) then
+          dofile(cache_dir)
+        end
 
-      require("rainbow-delimiters.setup").setup(opts)
-    end,
+        require("rainbow-delimiters.setup").setup(opts)
+      end,
+    },
+    "LiadOz/nvim-dap-repl-highlights",
   },
 
   config = function(_, opts)
@@ -60,6 +63,7 @@ return {
       dofile(cache_dir)
     end
 
+    require("nvim-dap-repl-highlights").setup()
     require("nvim-treesitter.configs").setup(opts)
   end,
 }

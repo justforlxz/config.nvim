@@ -2,12 +2,6 @@ return {
   "rcarriga/nvim-dap-ui",
   dependencies = {
     "nvim-neotest/nvim-nio",
-    {
-      "LiadOz/nvim-dap-repl-highlights",
-      config = function()
-        require("nvim-dap-repl-highlights").setup()
-      end,
-    },
   },
   -- stylua: ignore
   keys = {
