@@ -1,6 +1,7 @@
 return {
   "Exafunction/codeium.nvim",
   event = "InsertEnter",
+  enabled = false,
   opts = {
     enable_chat = true,
   },

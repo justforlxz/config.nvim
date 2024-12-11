@@ -1,5 +1,15 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
+  keys = {
+    {
+      "<leader>mg",
+      function()
+        require("render-markdown").toggle()
+      end,
+      mode = { "n" },
+      desc = "Markdown render toggle",
+    },
+  },
   opts = {
     file_types = { "markdown", "vimwiki", "Avante" },
     latex = { enabled = false },
