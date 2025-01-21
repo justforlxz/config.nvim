@@ -20,6 +20,9 @@ M.ui = {
     order = { "mode", "file", "git", "navic", "%=", "lsp_msg", "%=", "diagnostics", "cursor", "lsp", "cwd" },
     modules = {
       navic = function()
+        if next(vim.lsp.get_clients()) == nil then
+          return ""
+        end
         local ok, navic = pcall(require, "nvim-navic")
         if not ok then
           return ""
@@ -84,6 +87,9 @@ M.base46 = {
     "todo",
     "navic",
     "rainbowdelimiters",
+    "avante",
+    "diffview",
+    "git-conflict",
   },
   hl_override = {
     NvDashButtons = { fg = "yellow" },

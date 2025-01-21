@@ -16,6 +16,14 @@ autocmd("BufReadPost", {
   end,
 })
 
+-- autocmd("BufReadPost", {
+--   pattern = "*",
+--   callback = function()
+--     vim.opt_local.foldmethod = "expr"
+--     vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+--   end,
+-- })
+
 autocmd("ColorScheme", {
   pattern = "*",
   desc = "Prevent colorscheme clearing self-defined DAP marker colors",

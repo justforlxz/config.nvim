@@ -36,11 +36,6 @@ return {
     },
   },
   config = function(_, opts)
-    local cache_dir = vim.g.base46_cache .. "whichkey"
-    if vim.g.base46_cache and vim.uv.fs_stat(cache_dir) then
-      dofile(cache_dir)
-    end
-
     local wk = require("which-key")
     wk.setup(opts)
     if not vim.tbl_isempty(opts.defaults) then

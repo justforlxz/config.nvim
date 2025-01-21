@@ -78,11 +78,6 @@ return {
     },
   },
   config = function(_, opts)
-    local cache_dir = vim.g.base46_cache .. "nvimtree"
-    if vim.g.base46_cache and vim.uv.fs_stat(cache_dir) then
-      dofile(cache_dir)
-    end
-
     -- disable netrw at the very start of your init.lua
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1

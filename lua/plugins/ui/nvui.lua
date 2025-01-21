@@ -13,8 +13,9 @@ return {
     "NvChad/ui",
     event = "UIEnter",
     config = function()
-      dofile(vim.g.base46_cache .. "defaults")
-      dofile(vim.g.base46_cache .. "statusline")
+      for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
+        dofile(vim.g.base46_cache .. v)
+      end
 
       local map = vim.keymap.set
       map("n", "<leader>ch", "<CMD>NvCheatsheet<CR>", { desc = "Toggle nvcheatsheet" })

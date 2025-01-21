@@ -28,6 +28,7 @@ return {
 
       yaml = { "yamlfmt" },
       qmljs = { "qmlformat" },
+      cpp = { "clang-format" },
     },
     formatters = {
       qmlformat = {

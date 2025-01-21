@@ -14,6 +14,10 @@ return {
       completion = true,
       hover = true,
     },
+    popup = {
+      autofocus = true,
+      border = "rounded",
+    },
   },
 
   config = function(_, opts)

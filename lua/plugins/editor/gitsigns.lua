@@ -44,11 +44,6 @@ return {
     end,
   },
   config = function(_, opts)
-    local cache_dir = vim.g.base46_cache .. "git"
-    if vim.g.base46_cache and vim.uv.fs_stat(cache_dir) then
-      dofile(cache_dir)
-    end
-
     require("gitsigns").setup(opts)
   end,
 }

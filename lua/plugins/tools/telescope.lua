@@ -110,11 +110,6 @@ return {
     version = "^1.0.0",
   },
   config = function(_, opts)
-    local cache_dir = vim.g.base46_cache .. "telescope"
-    if vim.g.base46_cache and vim.uv.fs_stat(cache_dir) then
-      dofile(cache_dir)
-    end
-
     require("telescope").setup(opts)
   end,
 }

@@ -23,11 +23,6 @@ return {
     },
   },
   config = function(_, opts)
-    local cache_dir = vim.g.base46_cache .. "blankline"
-    if vim.g.base46_cache and vim.uv.fs_stat(cache_dir) then
-      dofile(cache_dir)
-    end
-
     local hooks = require("ibl.hooks")
     hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
     hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)

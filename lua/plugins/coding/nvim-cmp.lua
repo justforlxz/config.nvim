@@ -143,11 +143,6 @@ return {
   },
   opts = cmp_opts,
   config = function(_, opts)
-    local cache_dir = vim.g.base46_cache .. "cmp"
-    if vim.g.base46_cache and vim.uv.fs_stat(cache_dir) then
-      dofile(cache_dir)
-    end
-
     local cmp = require("cmp")
     cmp.setup(opts)
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
