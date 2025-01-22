@@ -18,7 +18,7 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    { "Groveer/nvvim", import = "nvvim.plugins.ui.nvui" },
+    { "Groveer/nvvim", import = "nvvim.plugins.ui.nvui", import = "nvvim/plugins/ai/avante" },
     -- import/override with your plugins
     { import = "plugins.ui.colorscheme" },
   },
