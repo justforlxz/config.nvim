@@ -14,13 +14,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-  spec = {
+require("lazy").setup({  spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    { "Groveer/nvvim", import = "nvvim.plugins.ui.nvui", import = "nvvim/plugins/ai/avante" },
+    -- { "Groveer/nvvim", import = "nvvim.plugins.ui.nvui" },
+    { "Groveer/nvvim", import = "nvvim/plugins/ai/avante" },
     -- import/override with your plugins
     { import = "plugins.ui.colorscheme" },
+    { import = "plugins.ui.noice" },
+    { import = "plugins.coding.crates" },
+    { import = "plugins.lsp.mason" },
+    { import = "plugins.lsp.cmp" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -36,6 +40,15 @@ require("lazy").setup({
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
   }, -- automatically check for plugin updates
+  ui = {
+    border = "rounded",
+    icons = {
+      ft = "",
+      lazy = "󰂠 ",
+      loaded = "",
+      not_loaded = "",
+    },
+  },
   performance = {
     rtp = {
       -- disable some rtp plugins
@@ -52,3 +65,4 @@ require("lazy").setup({
     },
   },
 })
+
