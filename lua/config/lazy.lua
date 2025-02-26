@@ -14,11 +14,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({  spec = {
+require("lazy").setup({
+  spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- { "Groveer/nvvim", import = "nvvim.plugins.ui.nvui" },
     { "Groveer/nvvim", import = "nvvim/plugins/ai/avante" },
+    { "Groveer/nvvim", import = "nvvim/plugins/ai/copilot" },
     -- import/override with your plugins
     { import = "plugins.ui.colorscheme" },
     { import = "plugins.ui.noice" },
@@ -65,4 +67,3 @@ require("lazy").setup({  spec = {
     },
   },
 })
-

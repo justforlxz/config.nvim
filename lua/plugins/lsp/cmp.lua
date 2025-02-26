@@ -6,7 +6,6 @@ return {
   opts = function(_, opts)
     table.insert(opts.sources, {
       { name = "emoji" },
-      { name = "orgmode" },
     })
     local cmp = require("cmp")
     opts.window = {
