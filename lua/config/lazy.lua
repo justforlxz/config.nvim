@@ -1,32 +1,16 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- { "Groveer/nvvim", import = "nvvim.plugins.ui.nvui" },
-    { "Groveer/nvvim", import = "nvvim/plugins/ai/avante" },
-    { "Groveer/nvvim", import = "nvvim/plugins/ai/copilot" },
+    { "Groveer/nvvim", import = "nvvim.plugins.ai.avante" },
     -- import/override with your plugins
     { import = "plugins.ui.colorscheme" },
     { import = "plugins.ui.noice" },
     { import = "plugins.coding.crates" },
     { import = "plugins.lsp.mason" },
-    { import = "plugins.lsp.cmp" },
+    { import = "plugins.ai.avante" },
+    -- { import = "plugins.lsp.cmp" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
