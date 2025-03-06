@@ -7,6 +7,9 @@ local o = vim.o
 local g = vim.g
 local command = vim.api.nvim_command
 
+-- disable lsp log
+vim.lsp.log.set_level(vim.log.levels.OFF)
+
 -- LazyVim auto format
 g.autoformat = false
 
