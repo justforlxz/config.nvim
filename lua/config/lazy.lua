@@ -8,6 +8,7 @@ require("lazy").setup({
     { import = "plugins.ui.colorscheme" },
     { import = "plugins.ui.noice" },
     { import = "plugins.coding.crates" },
+    { import = "plugins.coding.yanky" },
     { import = "plugins.lsp.mason" },
     { import = "plugins.ai.avante" },
     -- { import = "plugins.lsp.cmp" },
