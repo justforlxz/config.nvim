@@ -13,6 +13,8 @@ vim.lsp.log.set_level(vim.log.levels.OFF)
 -- LazyVim auto format
 g.autoformat = false
 
+g.lazyvim_blink_main = true
+
 -- LazyVim cmp transparent
 o.pumblend = 0
 

@@ -2,8 +2,6 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- { "Groveer/nvvim", import = "nvvim.plugins.ui.nvui" },
-    -- { "Groveer/nvvim", import = "nvvim.plugins.ai.avante" },
     -- import/override with your plugins
     { import = "plugins.ui.colorscheme" },
     { import = "plugins.ui.noice" },
@@ -11,7 +9,8 @@ require("lazy").setup({
     { import = "plugins.coding.yanky" },
     { import = "plugins.lsp.mason" },
     { import = "plugins.ai.avante" },
-    -- { import = "plugins.lsp.cmp" },
+    { import = "plugins.editor.fzf-lua" },
+    { import = "plugins.editor.render-markdown" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
