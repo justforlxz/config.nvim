@@ -5,6 +5,7 @@ require("lazy").setup({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
+        -- colorscheme = "solarized-osaka",
         colorscheme = "tokyonight",
         news = {
           lazyvim = true,
@@ -18,7 +19,8 @@ require("lazy").setup({
     { import = "plugins.coding.crates" },
     { import = "plugins.coding.yanky" },
     { import = "plugins.lsp.mason" },
-    { import = "plugins.ai.avante" },
+    { import = "plugins.ai.codecompanion" },
+    -- { import = "plugins.ai.avante" },
     { import = "plugins.editor.blink" },
     { import = "plugins.editor.fzf-lua" },
     { import = "plugins.editor.render-markdown" },
