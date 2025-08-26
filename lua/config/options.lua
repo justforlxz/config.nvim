@@ -20,7 +20,7 @@ o.pumblend = 0
 
 -- spell check
 opt.spell = true
-opt.spelllang = { "en_us", "cjk" }
+opt.spelllang = { "en", "cjk" }
 opt.spelloptions = "camel"
 
 vim.filetype.add({
