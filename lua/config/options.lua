@@ -15,6 +15,8 @@ g.autoformat = false
 
 g.lazyvim_blink_main = true
 
+g.lazyvim_picker = "snacks"
+
 -- LazyVim cmp transparent
 o.pumblend = 0
 

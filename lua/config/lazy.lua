@@ -13,17 +13,20 @@ require("lazy").setup({
         },
       },
     },
+    -- import self modules package
+    { import = "lxz.modules.ai.codecompanion" },
+
     -- import/override with your plugins
-    { import = "plugins.ui.colorscheme" },
-    { import = "plugins.ui.noice" },
-    { import = "plugins.coding.crates" },
-    { import = "plugins.coding.yanky" },
-    { import = "plugins.lsp.mason" },
-    { import = "plugins.ai.codecompanion" },
-    -- { import = "plugins.ai.avante" },
-    { import = "plugins.editor.blink" },
-    { import = "plugins.editor.fzf-lua" },
-    { import = "plugins.editor.render-markdown" },
+    { import = "lxz.plugins.coding.yanky" },
+    { import = "lxz.plugins.coding.crates" },
+    { import = "lxz.plugins.editor.blink" },
+    { import = "lxz.plugins.editor.fzf-lua" },
+    { import = "lxz.plugins.editor.render-markdown" },
+    { import = "lxz.plugins.lsp.mason" },
+    { import = "lxz.plugins.ui.colorscheme" },
+    { import = "lxz.plugins.ui.noice" },
+
+    -- { import = "lxz.plugins.ai.avante" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
