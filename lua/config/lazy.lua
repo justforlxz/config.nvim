@@ -5,8 +5,6 @@ require("lazy").setup({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
-        -- colorscheme = "solarized-osaka",
-        colorscheme = "tokyonight",
         news = {
           lazyvim = true,
           neovim = true,
@@ -20,6 +18,7 @@ require("lazy").setup({
     -- { import = "lxz.plugins.ai.codecompanion.copilot-cmp" },
     -- { import = "lxz.plugins.ai.codecompanion.copilot" },
     -- { import = "lxz.plugins.ai.codecompanion.mcphub" },
+    { import = "lxz.plugins.coding.blink" },
     { import = "lxz.plugins.coding.yanky" },
     { import = "lxz.plugins.coding.crates" },
     { import = "lxz.plugins.editor.blink" },
