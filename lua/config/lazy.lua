@@ -19,11 +19,11 @@ require("lazy").setup({
     { import = "lxz.plugins.editor.blink" },
     { import = "lxz.plugins.editor.fzf-lua" },
     { import = "lxz.plugins.editor.render-markdown" },
+    { import = "lxz.plugins.editor.checkmate" },
+    { import = "lxz.plugins.editor.obsidian" },
     { import = "lxz.plugins.lsp.mason" },
     { import = "lxz.plugins.ui.colorscheme" },
     { import = "lxz.plugins.ui.noice" },
-
-    -- { import = "lxz.plugins.ai.avante" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
