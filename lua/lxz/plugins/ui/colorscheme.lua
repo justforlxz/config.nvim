@@ -5,6 +5,7 @@ return {
     priority = 1000,
     name = "catppuccin",
     opts = {
+      flavour = "mocha",
       term_colors = true,
       transparent_background = true,
       float = {
