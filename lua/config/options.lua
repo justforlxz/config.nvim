@@ -7,19 +7,9 @@ local o = vim.o
 local g = vim.g
 local command = vim.api.nvim_command
 
-vim.opt.clipboard = "unnamedplus"
-
-vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-  },
-}
+vim.schedule(function()
+  opt.clipboard = "unnamedplus"
+end)
 
 -- disable lsp log
 vim.lsp.log.set_level(vim.log.levels.OFF)
