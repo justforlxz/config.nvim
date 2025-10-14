@@ -1,8 +1,26 @@
 return {
-  -- Make sure to set this up properly if you have lazy=true
   "MeanderingProgrammer/render-markdown.nvim",
-  opts = {
-    file_types = { "markdown", "Avante" },
+  keys = {
+    {
+      "<leader>mg",
+      function()
+        require("render-markdown").toggle()
+      end,
+      mode = { "n" },
+      desc = "Markdown render toggle",
+    },
   },
-  ft = { "markdown", "Avante" },
+  opts = {
+    latex = { enabled = false },
+    html = { enabled = true },
+    yaml = { enabled = true },
+    completions = {
+      lsp = { enabled = true },
+      blink = { enabled = true },
+    },
+    restart_highlighter = true,
+    checkbox = {
+      enabled = true,
+    },
+  },
 }

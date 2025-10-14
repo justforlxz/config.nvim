@@ -11,7 +11,10 @@ require("lazy").setup({
         },
       },
     },
-    --
+
+    -- { "groveer/nvvim", import = "nvvim.plugins.render.markdown"},
+    -- { "groveer/nvvim", import = "nvvim.plugins.tools.checkmate"},
+
     -- import/override with your plugins
     { import = "plugins.ai.sidekick" },
     { import = "plugins.coding.blink" },
@@ -22,7 +25,6 @@ require("lazy").setup({
     { import = "plugins.editor.fzf-lua" },
     { import = "plugins.editor.render-markdown" },
     { import = "plugins.editor.checkmate" },
-    { import = "plugins.editor.obsidian" },
     { import = "plugins.editor.smartyank" },
     { import = "plugins.lsp.mason" },
     { import = "plugins.ui.colorscheme" },

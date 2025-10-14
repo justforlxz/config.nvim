@@ -45,5 +45,6 @@ vim.filetype.add({
     avif = "image",
     wxml = "html",
     wxss = "css",
+    todo = "markdown",
   },
 })
