@@ -26,6 +26,7 @@ require("lazy").setup({
     { import = "plugins.editor.render-markdown" },
     { import = "plugins.editor.checkmate" },
     { import = "plugins.editor.smartyank" },
+    { import = "plugins.editor.diffview" },
     { import = "plugins.lsp.mason" },
     { import = "plugins.ui.colorscheme" },
     { import = "plugins.ui.noice" },
