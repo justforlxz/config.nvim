@@ -12,9 +12,6 @@ require("lazy").setup({
       },
     },
 
-    -- { "groveer/nvvim", import = "nvvim.plugins.render.markdown"},
-    -- { "groveer/nvvim", import = "nvvim.plugins.tools.checkmate"},
-
     -- import/override with your plugins
     { import = "plugins.ai.sidekick" },
     { import = "plugins.coding.blink" },
@@ -31,6 +28,7 @@ require("lazy").setup({
     { import = "plugins.ui.colorscheme" },
     { import = "plugins.ui.noice" },
     { import = "plugins.ui.dashboard" },
+    { import = "plugins.ui.glimmer"}
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

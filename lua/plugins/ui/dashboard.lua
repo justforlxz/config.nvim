@@ -6,13 +6,6 @@ return {
       enabled = true,
   sections = {
     { section = "header" },
-     {
-      section = "terminal",
-      cmd = "pokemon-colorscripts -n flareon --no-title",
-      pane = 2,
-      indent = 4,
-      height = 17,
-    },
     { section = "keys", gap = 1, padding = 1 },
     { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
     -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },

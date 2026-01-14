@@ -3,7 +3,7 @@ return {
   opts = {
     cli = {
       tools = {
-        claude = { cmd = { "ccr", "code" } },
+        claude = { cmd = { "claude", "--dangerously-skip-permissions" } },
         copilot = { cmd = { "copilot", "--banner" } },
       },
     },
