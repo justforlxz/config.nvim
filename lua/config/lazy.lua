@@ -25,6 +25,7 @@ require("lazy").setup({
     { import = "plugins.editor.smartyank" },
     { import = "plugins.editor.diffview" },
     { import = "plugins.lsp.mason" },
+    { import = "plugins.lsp.lsp" },
     { import = "plugins.ui.colorscheme" },
     { import = "plugins.ui.noice" },
     { import = "plugins.ui.dashboard" },

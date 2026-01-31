@@ -11,5 +11,6 @@ return {
     "clangd",
     "cpplint",
     "neocmakelsp",
+    "qmlls",
   },
 }
