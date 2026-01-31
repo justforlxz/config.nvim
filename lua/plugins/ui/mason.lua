@@ -6,11 +6,4 @@ return {
       -- icons = require("config.lazy").icons.mason,
     },
   },
-  ensure_installed = {
-    "html",
-    "clangd",
-    "cpplint",
-    "neocmakelsp",
-    "qmlls",
-  },
 }

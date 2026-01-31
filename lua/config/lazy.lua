@@ -24,12 +24,13 @@ require("lazy").setup({
     { import = "plugins.editor.checkmate" },
     { import = "plugins.editor.smartyank" },
     { import = "plugins.editor.diffview" },
-    { import = "plugins.lsp.mason" },
-    { import = "plugins.lsp.lsp" },
+    { import = "plugins.lsp.clangd" },
+    { import = "plugins.lsp.qml" },
     { import = "plugins.ui.colorscheme" },
     { import = "plugins.ui.noice" },
     { import = "plugins.ui.dashboard" },
-    { import = "plugins.ui.glimmer"}
+    { import = "plugins.ui.glimmer" },
+    { import = "plugins.ui.mason" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
