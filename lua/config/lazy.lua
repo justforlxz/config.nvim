@@ -24,6 +24,7 @@ require("lazy").setup({
     { import = "plugins.editor.checkmate" },
     { import = "plugins.editor.smartyank" },
     { import = "plugins.editor.diffview" },
+    { import = "plugins.editor.snacks" },
     { import = "plugins.lsp.clangd" },
     { import = "plugins.lsp.qml" },
     { import = "plugins.ui.colorscheme" },
